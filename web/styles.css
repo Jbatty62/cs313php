@@ -58,7 +58,6 @@ font-size: 36px;
 }
 
 .button {
-    -webkit-font-smoothing: antialiased;
 
 padding: .3em 1em;
 border: 2px solid;
@@ -109,6 +108,12 @@ padding-right: 1em;
     100% calc(100% - 10vw),
     0 100%
     );
+    -webkit- clip-path: polygon(
+    0 calc(0% + 10vw),
+    100% 0,
+    100% calc(100% - 10vw),
+    0 100%
+    );
 }
 
 #image-section {
@@ -125,12 +130,24 @@ padding-right: 1em;
     100% calc(100% - 10vw),
     0 100%
     );
+    -webkit- clip-path: polygon(
+    0 calc(0% + 10vw),
+    100% 0,
+    100% calc(100% - 10vw),
+    0 100%
+    );
 }
 
 #third-section {
     margin-top: -10vw;
     background-color: lightgoldenrodyellow;
     clip-path: polygon(
+    0 calc(0% + 10vw),
+    100% 0,
+    100% calc(100% - 10vw),
+    0 100%
+    );
+    -webkit-clip-path: polygon(
     0 calc(0% + 10vw),
     100% 0,
     100% calc(100% - 10vw),
