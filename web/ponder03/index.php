@@ -7,7 +7,6 @@ $NAV = $WEB_ROOT . "/nav.php";
     <head>
         <title>CS 313 - Ponder 03</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <script type="text/jscript" src="functions.js"></script>
     </head>
     <body>
          <?php 

@@ -1,13 +1,13 @@
 <nav class="navbar navbar-default" style="background-color:aqua;">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class=navbar-brand href= <?php echo $WEB_ROOT?> ><img src="logo.png" height="50px"></a>
+                    <a class=navbar-brand href= <?php echo $WEB_ROOT?> ><img src=<?php echo $WEB_ROOT? . "/logo.png"> height="50px"></a>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Teach Activities
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="/teach02/">Week 2</a></li>
+                        <li><a href=<?php echo '"' . $WEB_ROOT . "/teach02/" . '"'?> >Week 2</a></li>
                         <li><a href="/teach03/">Week 3</a></li>
                         <li><a href="/teach04/">Week 4</a></li>
                         <li><a href="/teach05/">Week 5</a></li>
