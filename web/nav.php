@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class=navbar-brand><img src="logo.png" height="100px"></a>
+                    <a class=navbar-brand><img src="logo.png" height="50px"></a>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Teach Activities
