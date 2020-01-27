@@ -1,7 +1,4 @@
-<?php
-$WEB_ROOT = "https://floating-bastion-15566.herokuapp.com";
 
-?>
 <html>
     <head>
         <title>CS 313 - Ponder 03</title>
