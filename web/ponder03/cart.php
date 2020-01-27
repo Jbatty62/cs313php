@@ -79,7 +79,7 @@
                     <p id="subtotal">Subtotal: $99.99</p>
                     <p id="total">Total: $99.99</p>
                     <a href="."><button style="float:left;clear:both;"><span>Continue Shopping</span></button></a>
-                    <a href="/checkout.php"; ?>"><button style="float:right;clear:right;"><span>Proceed to Checkout</span></button></a>
+                    <a href="./checkout.php"; ?>"><button style="float:right;clear:right;"><span>Proceed to Checkout</span></button></a>
                     
                     
                 </div>
