@@ -1,6 +1,4 @@
-<?php
-$WEB_ROOT = "https://floating-bastion-15566.herokuapp.com"
-?>
+
 <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
