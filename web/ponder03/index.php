@@ -1,6 +1,6 @@
 <?php
 $WEB_ROOT = "https://floating-bastion-15566.herokuapp.com";
-//$NAV = $WEB_ROOT . "/nav.php";
+$NAV = $WEB_ROOT . "/nav.php";
 
 ?>
 <html>
@@ -12,7 +12,7 @@ $WEB_ROOT = "https://floating-bastion-15566.herokuapp.com";
     <body>
         <div id=container>
             <?php 
-                include ($WEB_ROOT . "/nav.php");
+                include "https://floating-bastion-15566.herokuapp.com/nav.php";
             ?>
             <main id="main">
                 
