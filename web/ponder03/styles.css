@@ -242,6 +242,7 @@ input {
 
 nav {
     background-color: aqua;
+    padding: 8px;
 }
 
 .navbar-header {
