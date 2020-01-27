@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php 
-                include '../nav.php'
+                include '/nav.php'
         ?>
         <div id=container>
             <main id="main">
@@ -25,7 +25,7 @@
                         <input type="country" class="form-control" id="inputCountry" placeholder="Country">
                     </form>
                     <p id="total">Total: $99.99</p>
-                    <a href="cart.php"><button style="float:left;clear:both;"><span>Continue Shopping</span></button></a>
+                    <a href="."><button style="float:left;clear:both;"><span>Continue Shopping</span></button></a>
                     <button style="float:right;clear:right;"><span>Complete Purchase</span></button>
                     
                     
