@@ -75,8 +75,8 @@
                     </div>
                     <p id="subtotal">Subtotal: $99.99</p>
                     <p id="total">Total: $99.99</p>
-                    <button style="float:left;clear:both;"><span>Continue Shopping</span></button>
-                    <button style="float:right;clear:right;"><span>Proceed to Checkout</span></button>
+                    <a href="<?php echo $WEB_ROOT; ?>"><button style="float:left;clear:both;"><span>Continue Shopping</span></button></a>
+                    <a href="<?php echo $WEB_ROOT . "/checkout.php"; ?>"><button style="float:right;clear:right;"><span>Proceed to Checkout</span></button></a>
                     
                     
                 </div>

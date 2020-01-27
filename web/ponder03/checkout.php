@@ -23,7 +23,7 @@
                     </form>
                     <p id="total">Total: $99.99</p>
                     <button style="float:left;clear:both;"><span>Continue Shopping</span></button>
-                    <button style="float:right;clear:right;"><span>Proceed to Checkout</span></button>
+                    <button style="float:right;clear:right;"><span>Complete Purchase</span></button>
                     
                     
                 </div>
