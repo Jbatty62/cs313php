@@ -1,6 +1,5 @@
 <?php
 $WEB_ROOT = "https://floating-bastion-15566.herokuapp.com";
-$NAV = $WEB_ROOT . "/nav.php";
 
 ?>
 <html>
