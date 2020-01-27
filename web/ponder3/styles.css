@@ -1,0 +1,238 @@
+:root {
+    --color-1:#e5dace;
+    --color-3:#e5bb4b;
+    --color-2:#498eaf;
+    --color-4:#631f16;
+    --color-5:#ffffff;
+}
+body {
+    margin: 0;
+    color: var(--color-5)
+}
+
+h2 {
+    margin-top: 0;
+}
+#container {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 100%;
+    height: 100%;
+    
+}
+
+#main {
+    background-color: var(--color-1);
+    flex-basis: 800px;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row wrap;
+    flex-wrap: wrap;
+}
+
+
+#cart {
+    background-color: var(--color-3);
+    flex-basis: 300px;
+    flex-grow: 1;
+    padding: 15px;
+    min-height: 500px;
+    
+    
+}
+
+#float {
+    height: 100%;
+    width: 25%;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: fixed;
+}
+
+.item {
+    background-color: var(--color-4);
+    flex-basis: 300px;
+    margin: 15px;
+    flex-grow: 1;
+    justify-content: space-between;
+    height: 300px;
+    padding: 10px;
+    
+}
+
+.cart-item {
+    height: 75px;
+    flex-basis: 50px;
+    flex-grow: 1;
+    background-color: var(--color-1);
+    margin-bottom: 15px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.cart-item-image {
+   height: calc(100% - 16px);
+    background-color: aliceblue;
+    padding: 8px;
+}
+
+.cart-item-text {
+    padding-left: 16px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#cart-buttons {
+    position: relative;
+    align-self: flex-end;
+}
+
+/***************************
+* Cart Page Styles --->
+***************************/
+#cart-contents {
+    width: 70%;
+    margin: auto;
+}
+
+.cart-page-item {
+    background-color: var(--color-4);
+    flex-basis: 300px;
+    margin: 15px;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+    
+}
+
+#subtotal {
+    font-size: 24px;
+    line-height: 0;
+    float: right;
+}
+
+#total {
+    font-size: 32px;
+    line-height:0;
+    clear: right;
+    float: right;
+}
+
+/***************************
+* Button Styles --->
+***************************/
+button {
+  border-radius: 4px;
+  background-color: var(--color-2);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 8px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.close {
+    position: absolute;
+    right:8px;
+  top: 8px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #000;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+/***************************
+* Form Styles --->
+***************************/
+
+
+.form-group {
+  margin: 30px auto;
+  width: 450px;
+}
+
+#inputStreet {
+  width: calc(100% - 10px);
+}
+
+#inputCity {
+  width: 50%;
+}
+
+#inputState {
+  width: 15%;
+}
+
+#inputZip {
+  width: calc(100% - 50% - 15% - 31px);
+}
+
+#inputCounty {
+  width: 45%;
+}
+
+#inputCountry {
+  width: calc(100% - 45% - 20px);
+}
+
+input {
+    margin: 5px 5px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.25);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    float: left;
+}
