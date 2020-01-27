@@ -5,8 +5,8 @@
         <script type="text/jscript" src="functions.js"></script>
     </head>
     <body>
-        <?php
-        include $WEB_ROOT . "/nav.php";
+        <?php 
+                include '../nav.php'
         ?>
         <div id=container>
             <main id="main">
@@ -25,7 +25,7 @@
                         <input type="country" class="form-control" id="inputCountry" placeholder="Country">
                     </form>
                     <p id="total">Total: $99.99</p>
-                    <button style="float:left;clear:both;"><span>Continue Shopping</span></button>
+                    <a href="cart.php"><button style="float:left;clear:both;"><span>Continue Shopping</span></button></a>
                     <button style="float:right;clear:right;"><span>Complete Purchase</span></button>
                     
                     
