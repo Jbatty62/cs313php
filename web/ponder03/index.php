@@ -1,4 +1,8 @@
+<?php
+$WEB_ROOT = "https://floating-bastion-15566.herokuapp.com";
+$PAGE_ROOT = $WEB_ROOT . "/ponder03"
 
+?>
 <html>
     <head>
         <title>CS 313 - Ponder 03</title>
@@ -100,8 +104,8 @@
                     <div id="cart-item-2" class="cart-item"></div>
                     <div id="cart-item-3" class="cart-item"></div>
                     <div id="cart-buttons">
-                        <a href="<?php echo $WEB_ROOT . "/cart.php"; ?>"><button class="button" style="margin-right: 8px"><span>View Cart</span></button></a>
-                        <a href="<?php echo $WEB_ROOT . "/checkout.php"; ?>"><button><span>Checkout</span></button></a>
+                        <a href="<?php echo $PAGE_ROOT . "/cart.php"; ?>"><button class="button" style="margin-right: 8px"><span>View Cart</span></button></a>
+                        <a href="<?php echo $PAGE_ROOT . "/checkout.php"; ?>"><button><span>Checkout</span></button></a>
                     </div>
                     
                 </div>

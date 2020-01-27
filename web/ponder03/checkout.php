@@ -5,6 +5,9 @@
         <script type="text/jscript" src="functions.js"></script>
     </head>
     <body>
+        <?php
+        include $WEB_ROOT . "/nav.php";
+        ?>
         <div id=container>
             <main id="main">
                 <div style="margin: auto">
