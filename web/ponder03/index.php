@@ -12,7 +12,7 @@ $NAV = $WEB_ROOT . "/nav.php";
     <body>
         <div id=container>
             <?php 
-                include "https://floating-bastion-15566.herokuapp.com/nav.php";
+                include '../nav.php'
             ?>
             <main id="main">
                 
