@@ -10,10 +10,10 @@ $NAV = $WEB_ROOT . "/nav.php";
         <script type="text/jscript" src="functions.js"></script>
     </head>
     <body>
-        <div id=container>
-            <?php 
+         <?php 
                 include '../nav.php'
             ?>
+        <div id=container>
             <main id="main">
                 
                     <div id="item-1" class="item">
