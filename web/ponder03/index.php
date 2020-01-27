@@ -10,7 +10,7 @@ $PAGE_ROOT = $WEB_ROOT . "/ponder03"
     </head>
     <body>
          <?php 
-                include '/nav.php'
+                include '../nav.php'
             ?>
         <div id=container>
             <main id="main">

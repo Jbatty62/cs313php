@@ -238,7 +238,9 @@ input {
     float: left;
 }
 
-/* Navbar Styles */
+/***************************
+* Navbar Styles 
+***************************/
 
 nav {
     background-color: aqua;
