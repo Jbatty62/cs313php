@@ -250,7 +250,7 @@ nav {
 
 /* Style The Dropdown Button */
 .dropdown-toggle {
-    float: right;
+    margin: auto;
     vertical-align: top;
 }
 
@@ -258,6 +258,8 @@ nav {
 .dropdown {
   position: relative;
   display: inline-block;
+    float: right;
+    padding: 6px;
 }
 
 /* Dropdown Content (Hidden by Default) */
