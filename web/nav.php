@@ -1,7 +1,10 @@
+<?php
+ $WEB_ROOT = "https://floating-bastion-15566.herokuapp.com/" 
+>
 <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class=navbar-brand><img src="logo.png" height="50px"></a>
+                    <a class=navbar-brand href=<?php echo "$web_root" ?>><img src="logo.png" height="50px"></a>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Teach Activities
