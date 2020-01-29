@@ -1,7 +1,11 @@
 <?php
-$WEB_ROOT = "https://floating-bastion-15566.herokuapp.com";
-$PAGE_ROOT = $WEB_ROOT . "/ponder03"
+    session_start();
 
+    $WEB_ROOT = "https://floating-bastion-15566.herokuapp.com";
+    $PAGE_ROOT = $WEB_ROOT . "/ponder03"
+        
+    
+   
 ?>
 <html>
     <head>
