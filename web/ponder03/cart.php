@@ -1,3 +1,8 @@
+<?php 
+
+session_start();
+
+?>
 <html>
     <head>
         <title>CS 313 - Ponder 03 - Cart</title>
@@ -11,6 +16,28 @@
         <div id=container>
             <main id="main">
                 <div id="cart-contents">
+                <?php
+                if(isset($_SESSION["cart"])){
+                    foreach($_SESSION["cart"] as $item => $id){
+                        echo '<div id="item-1" class="cart-page-item"> <h2>';
+                        echo $item['name'];
+                        echo '<img src="book.png" height="100px" style="float: right;"> <h3>Price:';
+                        echo  $item['price'];
+                        echo '</h3><button id="button';
+                        echo $id;
+                        echo '" onclick="removeFromCart()"><span>Remove From Cart</span></button>';
+                        
+                    }
+                }
+                else {
+                    echo '<div id="item-1" class="cart-page-item">
+                        <h2>Your Cart is Empty!</h2>
+                        <p>You should go fill it up!</p>
+                        <a href="./"><button><span>Return to Cart</span></button></a>
+                        </div>';
+                }
+                ?>
+                
                     <div id="item-1" class="cart-page-item">
                         <h2>Basic Rule Set</h2>
                         <img src="book.png" height="100px" style="float: right;">

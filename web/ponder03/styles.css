@@ -44,10 +44,10 @@ h2 {
 
 #float {
     height: 100%;
-    width: 25%;
     flex-direction: column;
     justify-content: flex-end;
-    position: fixed;
+    display: block;
+    overflow: scroll;
 }
 
 .item {
@@ -72,6 +72,10 @@ h2 {
     flex-direction: row-reverse;
     justify-content: flex-end;
     position: relative;
+}
+
+.cart-item-description {
+  display: none;
 }
 
 .cart-item-image {
