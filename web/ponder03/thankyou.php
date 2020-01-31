@@ -25,12 +25,13 @@ $total = 0;
                     echo '<p>Address: ' . $_GET['street'] . ',' . $_GET['city'] . ', ' . $_GET['state'] . ' ' . $_GET['zip'] . '</p>';
                     echo '<p>Country: ' . $_GET['country'] . '</p>';
                     echo '<ul style="padding:0;">Items Purchased: ';
+                    
                     foreach ($_SESSION['cart'] as $item) {
                         echo '<li style="list-style:none;padding-left:40px;"> ID: ' . $item['id'] . ' Name: ' . $item['name'] . ' Price: $' . $item['price'] . '</li>';
                         $total += $item['price'];
                     }
                     echo '</ul>';
-                    echo '<p>Total: ' . number_format($total, 2) . '</p>';
+                    echo '<p>Total: $' . number_format($total, 2) . '</p>';
 
 
                     $_SESSION['cart'] = array();
