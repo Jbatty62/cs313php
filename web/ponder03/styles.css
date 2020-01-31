@@ -180,7 +180,7 @@ nav > button > span:after {
   display: none;
 }
 
-button:hover span {
+nav > button:hover span {
   padding-right: 8px;
 }
 
