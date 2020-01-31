@@ -176,14 +176,6 @@ button:hover span:after {
   right: 0;
 }
 
-nav > button > span:after {
-  display: none;
-}
-
-nav > button:hover span {
-  padding-right: 8px;
-}
-
 
 .close {
     position: absolute;
@@ -303,6 +295,7 @@ nav {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+    margin-top: -10px;
 }
 
 /* Links inside the dropdown */
