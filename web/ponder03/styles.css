@@ -168,13 +168,15 @@ button span:after {
 }
 
 button:hover span {
-  padding-right: 25px;
+  padding-right: 30px;
 }
 
 button:hover span:after {
   opacity: 1;
   right: 0;
 }
+
+
 
 .close {
     position: absolute;
