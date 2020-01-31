@@ -73,7 +73,7 @@ $total = 0;
                     </div>
                     <a href="./"><button class="button" style="margin-right: 8px"><span>Return to Shop</span></button></a>
                     <a href="./cart.php"><button><span>View Cart</span></button></a>                   
-                </div>
+                
             </aside>
             
         </div>
