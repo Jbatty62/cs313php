@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" style="background-color:aqua;">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class=navbar-brand href="<?php echo $WEB_ROOT?>" ><img src="<?php echo $WEB_ROOT . "/logo.png"; ?>" height="50px"></a>
+                    <a class=navbar-brand href="/" ><img src="<?php echo $WEB_ROOT . "/logo.png"; ?>" height="50px"></a>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Teach Activities

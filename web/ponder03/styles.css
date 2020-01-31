@@ -168,7 +168,7 @@ button span:after {
 }
 
 button:hover span {
-  padding-right: 30px;
+  padding-right: 25px;
 }
 
 button:hover span:after {
@@ -176,6 +176,13 @@ button:hover span:after {
   right: 0;
 }
 
+nav > button > span:after {
+  display: none;
+}
+
+button:hover span {
+  padding-right: 8px;
+}
 
 
 .close {
