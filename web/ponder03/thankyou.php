@@ -1,11 +1,10 @@
 <?php
 
-$_SESSION = array();
-foreach (array_keys($_SESSION['cart']) as $key ){
+session_start();
 
-    unset($_SESSION['cart']);
 
-}
+    
+
 
 ?>
 <html>
@@ -21,6 +20,20 @@ foreach (array_keys($_SESSION['cart']) as $key ){
         <div id=container>
             <main id="main">
                 <div style="margin: auto">
+                <?php
+                    echo '<p>Name: ' . $_GET['firstname'] . ' '. $_GET['lastname'] . '</p>';
+                    echo '<p>Address: ' . $_GET['street'] . ',' . $_GET['city'] . ', ' . $_GET['state'] . ' ' . $_GET['zip'] . '</p>';
+                    echo '<p>Country: ' . $_GET['country'] . '</p>';
+                    echo '<ul style="padding:0;">Items Purchased: ';
+                    foreach ($_SESSION['cart'] as $item) {
+                        echo '<li style="list-style:none;padding-left:40px;"> ID: ' . $item['id'] . ' Name: ' . $item['name'] . ' Price: $' . $item['price'] . '</li>';
+                    }
+                    echo '</ul>';
+
+
+                    $_SESSION['cart'] = array();
+
+                ?>
                     <h1>Thank you For Your Purchase!</h1>
                     <p>If this were a real transaction, we would email you a receipt now!</p>
                     

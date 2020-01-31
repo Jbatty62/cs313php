@@ -12,6 +12,7 @@ body {
     padding: 0;
     color: var(--color-5)
 }
+
 a {color: var(--color-3)}
 
 h2 {
@@ -21,6 +22,7 @@ h2 {
     display: flex;
     flex-flow: row wrap;
     flex: 1 100%;
+    min-height: 100%;
     
 }
 
@@ -211,28 +213,36 @@ button:hover span:after {
   width: 450px;
 }
 
-#inputStreet {
+#street {
   width: calc(100% - 10px);
 }
 
-#inputCity {
+#city {
   width: 50%;
 }
 
-#inputState {
+#state {
   width: 15%;
 }
 
-#inputZip {
+#zip {
   width: calc(100% - 50% - 15% - 31px);
 }
 
-#inputCounty {
+#county {
   width: 45%;
 }
 
-#inputCountry {
+#country {
   width: calc(100% - 45% - 20px);
+}
+
+#firstname {
+  width: calc(50% - 10px);
+}
+
+#lastname {
+  width: calc(50% - 10px);
 }
 
 input {
@@ -272,8 +282,8 @@ nav {
 .dropdown {
   position: relative;
   display: inline-block;
-    float: right;
-    padding: 6px;
+  float: right;
+  padding: 6px;
 }
 
 /* Dropdown Content (Hidden by Default) */
