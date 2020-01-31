@@ -5,6 +5,8 @@
     --color-4:#631f16;
     --color-5:#ffffff;
 }
+
+
 body {
     margin: 0;
     color: var(--color-5)
@@ -43,11 +45,10 @@ h2 {
 }
 
 #float {
-    height: 100%;
+    width: 100%;
     flex-direction: column;
     justify-content: flex-end;
     display: block;
-    overflow: scroll;
 }
 
 .item {
@@ -120,11 +121,17 @@ h2 {
     float: right;
 }
 
-#total {
+#total-wrapper {
     font-size: 32px;
     line-height:0;
     clear: right;
     float: right;
+}
+
+#total {
+  float: right;
+  font-size: 32px;
+  line-height:0;
 }
 
 /***************************
