@@ -15,7 +15,7 @@ $total = 0;
     </head>
     <body>
         <?php 
-                include '../nav.php'
+               //include '../nav.php'
         ?>
         <div id=container>
             <main id="main">

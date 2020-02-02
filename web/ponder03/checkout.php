@@ -13,7 +13,7 @@ $total = 0;
     </head>
     <body>
         <?php 
-                include '../nav.php'
+               // include '../nav.php'
         ?>
         <div id=container>
         
@@ -33,7 +33,7 @@ $total = 0;
 
                         <input type="text" name="county" class="form-control" id="county" placeholder="County">
                         <input type="text" name="country" class="form-control" id="country" placeholder="Country">
-                        <input id="submit"type="submit" value="Complete Purchase">
+                        <input id="submit" type="submit" value="Complete Purchase">
                     </form>
                     <p id="total">Total: $99.99</p>
                     
