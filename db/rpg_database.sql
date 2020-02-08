@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user_account CASCADE;
+DROP TABLE IF EXISTS user_accounts CASCADE;
 DROP TABLE IF EXISTS modules CASCADE;
 
 DROP TABLE IF EXISTS character_races CASCADE;
@@ -19,9 +19,9 @@ DROP SEQUENCE IF EXISTS items_sequence;
 
 
 
-CREATE TABLE user_account (
-    user_account_id     INTEGER         CONSTRAINT user_account_pk PRIMARY KEY   NOT NULL,
-    username    VARCHAR             CONSTRAINT user_account_uc UNIQUE        NOT NULL,
+CREATE TABLE user_accounts (
+    user_account_id     INTEGER     CONSTRAINT user_accounts_pk PRIMARY KEY   NOT NULL,
+    username    VARCHAR             CONSTRAINT user_accounts_uc UNIQUE        NOT NULL,
     first_name  VARCHAR,
     last_name   VARCHAR,
     created_by  INTEGER,
@@ -50,7 +50,7 @@ CREATE SEQUENCE modules_sequence START WITH 1001;
 DROP TABLE IF EXISTS user_orders CASCADE;
 CREATE TABLE user_orders (
     user_orders_id       INTEGER    CONSTRAINT user_orders_pk PRIMARY KEY    NOT NULL,
-    user_account_id     INTEGER     CONSTRAINT user_orders_fk_1 REFERENCES user_account(user_account_id) NOT NULL,
+    user_account_id     INTEGER     CONSTRAINT user_orders_fk_1 REFERENCES user_accounts(user_account_id) NOT NULL,
     module_id           INTEGER     CONSTRAINT user_orders_fk_2 REFERENCES modules(module_id)         NOT NULL,
     time                DATE                                                    NOT NULL,
     created_by  INTEGER,
@@ -138,6 +138,12 @@ CREATE TABLE items (
 
 
 CREATE SEQUENCE items_sequence START WITH 1001;
+
+CREATE TABLE games (
+    game_id INTEGER CONSTRAINT games_pk PRIMARY KEY,
+    owner_id INTEGER CONSTRAINT games_fk1 REFERENCES user_accounts(user_account_id),
+    
+)
 
 /* SOME INFO TO INSERT */ 
 
