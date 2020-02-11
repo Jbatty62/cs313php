@@ -10,7 +10,7 @@
 body {
     margin: 0;
     padding: 0;
-    color: var(--color-5)
+    color: var(--color-5);
 }
 
 a {color: var(--color-3)}
