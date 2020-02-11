@@ -66,6 +66,7 @@ CREATE TABLE character_races (
     character_races_id         INTEGER     CONSTRAINT character_races_pk PRIMARY KEY  NOT NULL,
     module_id        INTEGER         CONSTRAINT user_orders_fk_2 REFERENCES modules(module_id) NOT NULL,
     description varchar(2000),
+    name VARCHAR(30),
     strength_cost_adjust INTEGER,
     dexterity_cost_adjust INTEGER,
     constitution_cost_adjust INTEGER,
