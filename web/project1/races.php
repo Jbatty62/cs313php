@@ -37,7 +37,7 @@ catch (PDOException $ex)
         <main id="main">
             <?php
                 echo '<p>In php Block</p>';
-                foreach ($db->query("SELECT * FROM character_races") as $row) {    
+                foreach ($db->query('SELECT * FROM character_races') as $row) {    
                     echo '<p>In Foreach Block</p>';            
                     echo '<div class="card">'. $row['name'] . '</div>';
                 }
