@@ -1,8 +1,9 @@
 <?php
     session_start();
+    include 'connect.php';
 
     $total = 0;
-   
+    
 ?>
 <html>
     <head>
