@@ -43,37 +43,6 @@
 
 
                     ?>
-
-
-                    <?php 
-                    
-                    if(!isset($_SESSION['cart'][1]))
-                        include 'item1.html';
-
-                    if(!isset($_SESSION['cart'][2]))
-                        include 'item2.html';
-
-                    if(!isset($_SESSION['cart'][3]))
-                        include 'item3.html';
-
-                    if(!isset($_SESSION['cart'][4]))
-                        include 'item4.html';
-
-                    if(!isset($_SESSION['cart'][5]))
-                        include 'item5.html';
-
-                    if(!isset($_SESSION['cart'][6]))
-                        include 'item6.html';
-
-                    if(!isset($_SESSION['cart'][7]))
-                        include 'item7.html';
-
-                    if(!isset($_SESSION['cart'][8]))
-                        include 'item8.html';
-
-                
-                        
-                        ?>
                
                 
             </main>
