@@ -17,9 +17,7 @@
         </style>
     </head>
     <body>
-         <?php 
-             //   include '../nav.php'
-            ?>
+        <?php include 'nav.php'; ?>
         <div id=container>
             <main id="main">
                 
