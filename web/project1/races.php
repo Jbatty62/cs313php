@@ -16,9 +16,12 @@ include connect.php;
     <div id="container">
         <main id="main">
             <?php
-                foreach ($db->query("SELECT * FROM character_races") as $row) {                
+                echo '<p>In php Block</p>';
+                foreach ($db->query("SELECT * FROM character_races") as $row) {    
+                    echo '<p>In Foreach Block</p>';            
                     echo '<div class="card">'. $row['name'] . '</div>';
                 }
+                echo '<p>Out of For Each</p>';
             ?>
         </main>
 
