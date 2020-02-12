@@ -7,14 +7,10 @@ try
     $dbOpts = parse_url($dbUrl);
 
     $dbHost = $dbOpts["host"];
-    echo $dbHost;
     $dbPort = $dbOpts["port"];
-    echo $dbPort;
     $dbUser = $dbOpts["user"];
-    echo $dbUser;
     $dbPassword = $dbOpts["pass"];
     $dbName = ltrim($dbOpts["path"],'/');
-    echo $dbName;
 
     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
@@ -40,12 +36,9 @@ catch (PDOException $ex)
     <div id="container">
         <main id="main">
             <?php
-                echo '<p>In php Block</p>';
-                foreach ($db->query('SELECT * FROM character_races') as $row) {    
-                    echo '<p>In Foreach Block</p>';            
+                foreach ($db->query('SELECT * FROM character_races') as $row) {               
                     echo '<div class="card">'. $row['name'] . '</div>';
                 }
-                echo '<p>Out of For Each</p>';
             ?>
         </main>
 
