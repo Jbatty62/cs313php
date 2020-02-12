@@ -24,16 +24,16 @@
             <main id="main">
                 
                     <?php
-                    echo "main php block";
+                   
 
                             foreach ($db->query('SELECT * FROM modules') as $row) {
-                                echo "in ForEach";
+                               
                                 
                                 if(!isset($_SESSION['cart'][$row['module_id']])) {
-                                    echo "in if";
+        
                                     echo '<div id="item-' . $row['module_id'] . '" class="item">'.
                                     '<h2 id="item-name-' . $row['module_id'] . '" class="item-name">'. $row['module_name'] . '</h2>' . 
-                                    '<img id=item-image-' . $row['module_id'] . '" src=icon' .  $row['module_id'] . '" height="100px" style="float:right;">' . 
+                                    '<img id=item-image-' . $row['module_id'] . '" src=icon' .  $row['module_id'] . '.png" height="100px" style="float:right;">' . 
                                     '<p id="item-description-' . $row['module_id'] . '"> Description: ' . $row['short_description'] . '</p>' . 
                                     '<h3 id=item-price-' . $row['module_id'] . '" class="item-price"> Price: ' . $row['price'] . '</h3>' . 
                                     '<button id="button' . $row['module_id'] . '" onclick="addtocart(' . $row['module_id'] . ')"><span>Add to Cart</span></button>' . 
