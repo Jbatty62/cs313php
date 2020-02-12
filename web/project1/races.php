@@ -7,10 +7,14 @@ try
     $dbOpts = parse_url($dbUrl);
 
     $dbHost = $dbOpts["host"];
+    echo $dbHost;
     $dbPort = $dbOpts["port"];
+    echo $dbPort;
     $dbUser = $dbOpts["user"];
+    echo $dbUser;
     $dbPassword = $dbOpts["pass"];
     $dbName = ltrim($dbOpts["path"],'/');
+    echo $dbName;
 
     $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
 
