@@ -37,7 +37,31 @@ catch (PDOException $ex)
         <main id="main">
             <?php
                 foreach ($db->query('SELECT * FROM character_races') as $row) {               
-                    echo '<div class="accordion">'. $row['name'] . '</div>';
+                    echo '<div class="accordion">'. '<h2 class="name">'.$row['name'] .'</h2> <p class="description>'. $row['short_description'] .'</p>' .
+                    '<div class="stats-table">' . "<table>
+                    <tr>
+                      <th>Strength<br>Cost<br>Adjust</th>
+                      <th>Dexterity<br>Cost<br>Adjust<br></th>
+                      <th>Constitution<br>Cost<br>Adjust<br></th>
+                      <th>Speed<br>Cost<br>Adjust<br></th>
+                      <th>Wit<br>Cost<br>Adjust<br></th>
+                      <th>Intelligence<br>Cost<br>Adjust<br></th>
+                      <th>Wisdom<br>Cost<br>Adjust<br></th>
+                      <th>Charisma<br>Cost<br>Adjust</th>
+                    </tr>
+                    <tr>
+                    <td>" . $row['strength_cost_adjust'] ."</td>
+                    <td>" . $row['dexterity_cost_adjust'] ."</td>
+                    <td>" . $row['constitution_cost_adjust'] ."</td>
+                    <td>" . $row['speed_cost_adjust'] ."</td>
+                    <td>" . $row['wit_cost_adjust'] ."</td>
+                    <td>" . $row['intelligence_cost_adjust'] ."</td>
+                    <td>" . $row['wisdom_cost_adjust'] ."</td>
+                    <td>" . $row['charisma_cost_adjust'] ."</td>
+                    </tr>
+                  </table>" .
+                    
+                    '</div></div>';
                 }
             ?>
         </main>
