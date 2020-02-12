@@ -1,89 +1,23 @@
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-        <script type="text/javascript" src="functions.js"></script>
-        <title>John Batty's Homepage</title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>The Last Stand RPG</title>
+</head>
+<body>
     
-    <body>
-        <?php 
-            include 'nav.php';
-        ?>
-        <section id="first-section" class="container-fluid">
-            <div class="row">
-                <div id="portrait" class="col-md-5"> <hr class="divider"> </div>
-                <div id="first-textbox" class="col-md-7">
-                    <hr class="divider">
-                    <h2>I'm John Batty</h2>
-                    <h3>Web Developer &amp; Software Engineer</h3>
-                    <hr class="divider">
-                    <h1> A Little Bit About Me</h1>
-                    <hr class="divider">
-                    <button class="button">View My Assignments</button>
-                    <hr class="divider">
-                    <div class="row split-row">
-                        <div id="div1" class="col-sm-6">
-                            <h4>I'm An Entreprenuer</h4>
-                            <p>In 2015, I returned from my mission to Minneapolis, Minnesota to a depressed local economy. It quickly became evident to me that if I were going to make a living in my hometown of Vernal, Utah. I was going to have to make an opportunity for myself.</p>
-                        </div>
-                        <div id="div2" class="col-sm-6">
-                            
-                            <h4>I'm A Student</h4>
-                            <p>I'm a Software Engineering major in my junior year at BYU-Idaho. I find time to do all of my school work in the middle of the night while most people are sleeping.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="third-section" class="container-fluid">
-           
-                <div class="row light">
-                    <div id="business1" class="col-sm-3">
-                        <h4>I Sell Bobbleheads</h4>
-                        <p>My first business venture was selling bobbleheads online. I started in 2015, the year I returned from my mission, and have continued ever since. Every year, my sales are significantly better than the last!</p>
-                    </div>
-                    <div id="business2" class="col-sm-3">
-                        <h4>I Run a Digital Agency</h4>
-                        <p>When people started to see my success in online business, I began to get people requesting my services to help their businesses succeed online. I began by building websites, and have expanded my services rapidly. Today, my team of 6 offers a wide array of services including web hosting, social media marketing, content creation, and graphic design.</p>
-                    </div>
-                    <div id="business3" class="col-sm-3">
-                        <h4>I Teach Swimming Lessons</h4>
-                        <p>Just before I got married, I found myself short on cash. With only a couple of months to go, I decided to combine my online marketing experience with a skill I learned in high school to generate some income quickly. I began offering swimming lessons. I immediately had a full schedule, and brought in over $9000 over the next three months! </p>
-                    </div>
-                    <div id="business4" class="col-sm-3">
-                        <h4>I Run a Non-Profit</h4>
-                        <p>I beleive that there are pinciples the next generation must be taught. I am a founding board member of The Rent Coat Project, a non-profit dedicated to helping young men learn leadership skills and understand the importance of concepts such as liberty and capitalism.</p>
-                    </div>
-                </div>
-            
-        </section>
-        <section id="image-section" class="container-fluid light">
-           
-                <hr class="divider">
-            
-        </section>
-        <section id="second-section" class="container-fluid light">
-           
-                <div class="text-center">
-                    <h2 class="light">I'm a Father and a Family Man</h2>
-                    <p>I got married in 2017 to the girl of my dreams. Just a few months ago, we welcomed our first child into the world. Our son, Levi, immediately became the light and center of my life. I love my little family with all my heart, and want to do everything I can to be a good father. I work during the day, and do all of my schoolwork in the middle of the night so that I can dedicate as much of my evening as I can to spending time with them. </p>
-                </div>
-            
-        </section>
-        
-        <section id="fourth-section" class="container-fluid">
-            <div id="fourth-section-textbox" class="jumbotron text-center">
-            <h1>Thanks for Learning About Me!</h1>
-            <p>There are lots of interesting things that I would love to share, but this is all for now! Check back later for some more fun facts about me.</p>
-            
-            </div>
-        
-        </section>
-    </body>
-
+    <a href="races.php">Races</a>
+    <a href="classess.php">Classes</a>
+    <a href="items.php">Items</a>
+    <a href="spells.php">Spells</a>
+    <a href="account.php">Account</a>
+    <a href="character.php">Character</a>
+    <a href="abilities.php">Abilities</a>
+    <a href="/shop">Shop</a>
+    
+    
+</body>
 </html>

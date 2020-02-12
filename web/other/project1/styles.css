@@ -58,9 +58,11 @@ body {
 /*******************************************************************
 * Nav Bar Styles
 *******************************************************************/
+nav {
+    width: 100%;
+}
 
-
-ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -81,7 +83,7 @@ ul {
   }
   
   li a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+    background-color: var(--color-3);
   }
   
   li.dropdown {
@@ -105,7 +107,7 @@ ul {
     text-align: left;
   }
   
-  .dropdown-content a:hover {background-color: #f1f1f1;}
+  .dropdown-content a:hover {background-color: var(--color-5);}
   
   .dropdown:hover .dropdown-content {
     display: block;
