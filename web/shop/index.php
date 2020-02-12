@@ -21,35 +21,24 @@
         <div id=container>
             <main id="main">
                 
-                    <?php 
-                    
-                    if(!isset($_SESSION['cart'][1]))
-                        include 'item1.html';
+                    <?php
 
-                    if(!isset($_SESSION['cart'][2]))
-                        include 'item2.html';
+                            foreach ($db->query('SELECT * FROM modules') as $row) {
+                                
+                                if(!isset($_SESSION['cart'][$row['module_id']])) {
 
-                    if(!isset($_SESSION['cart'][3]))
-                        include 'item3.html';
+                                    echo '<div id="item-' . $row['module_id'] . '" class="item">'.
+                                    '<h2 id="item-name-' . $row['module_id'] . '" class="item-name">'. $row['name'] . '</h2>' . 
+                                    '<img id=item-image-' . $row['module_id'] . '" src=icon' .  $row['module_id'] . '" height="100px" style="float:right;">' . 
+                                    '<p id="item-description-' . $row['module_id'] . '"> Description: ' . $row['description'] . '</p>' . 
+                                    '<h3 id=item-price-' . $row['module_id'] . '" class="item-price"> Price: ' . $row['price'] . '</h3>' . 
+                                    '<button id="button' . $row['module_id'] . '" onclick="addtocart(' . $row['module_id'] . ')"><span>Add to Cart</span></button>' . 
+                                    '</div>';
 
-                    if(!isset($_SESSION['cart'][4]))
-                        include 'item4.html';
+                                }
+                            }
 
-                    if(!isset($_SESSION['cart'][5]))
-                        include 'item5.html';
-
-                    if(!isset($_SESSION['cart'][6]))
-                        include 'item6.html';
-
-                    if(!isset($_SESSION['cart'][7]))
-                        include 'item7.html';
-
-                    if(!isset($_SESSION['cart'][8]))
-                        include 'item8.html';
-
-                
-                        
-                        ?>
+                    ?>
                
                 
             </main>
