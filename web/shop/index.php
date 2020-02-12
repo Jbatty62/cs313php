@@ -35,7 +35,7 @@
                                     '<h2 id="item-name-' . $row['module_id'] . '" class="item-name">'. $row['module_name'] . '</h2>' . 
                                     '<img id="item-image-' . $row['module_id'] . '" src="icon' .  $row['module_id'] . '.png" height="100px" style="float:right;">' . 
                                     '<p id="item-description-' . $row['module_id'] . '"> Description: ' . $row['short_description'] . '</p>' . 
-                                    '<h3 id=item-price-' . $row['module_id'] . '" class="item-price"> Price: ' . $row['price'] . '</h3>' . 
+                                    '<h3 id="item-price-' . $row['module_id'] . '" class="item-price"> Price: ' . $row['price'] . '</h3>' . 
                                     '<button id="button' . $row['module_id'] . '" onclick="addToCart(' . $row['module_id'] . ')"><span>Add to Cart</span></button>' . 
                                     '</div>';
                                 }
