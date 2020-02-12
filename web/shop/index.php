@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    include '/connect.php';
+    include './connect.php';
 
     $total = 0;
     
@@ -19,7 +19,7 @@
         </style>
     </head>
     <body>
-        <?php include '/nav.php';  ?>
+        <?php include './nav.php';  ?>
         <div id="container">
             <main id="main">
                 
