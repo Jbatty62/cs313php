@@ -1,10 +1,10 @@
 <?php
     session_start();
-    echo "before connect";
+    
     include '/connect.php';
 
     $total = 0;
-    echo "after include connect.php";
+    
 ?>
 <html>
     <head>
@@ -19,13 +19,13 @@
         </style>
     </head>
     <body>
-        <?php echo "before include nav"; include '/nav.php'; echo "after include nav"; ?>
+        <?php include '/nav.php';  ?>
         <div id="container">
             <main id="main">
                 
                     <?php
                     echo "main php block";
-
+/*
                             foreach ($db->query('SELECT * FROM modules') as $row) {
                                 echo "in ForEach";
                                 
@@ -40,7 +40,7 @@
                                     '</div>';
                                 }
                             }
-
+*/
 
                     ?>
 
