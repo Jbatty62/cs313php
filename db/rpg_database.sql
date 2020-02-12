@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS character_abilities CASCADE;
 DROP TABLE IF EXISTS character_spells CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS games CASCADE;
-DROP TABLE IF EXISTS parties CASCADE;
+DROP TABLE IF EXISTS party_members CASCADE;
 
 CREATE TABLE user_accounts (
     user_account_id     SERIAL     CONSTRAINT user_accounts_pk PRIMARY KEY   NOT NULL,
@@ -41,10 +41,10 @@ VALUES              ('Basic Rule Set', 'This is a short description lorem ipsum 
                     ('Advanced Rule Set', 'This is a short description lorem ipsum set dolor', 'this is a long description lorem ipsum set dolor', 29.99, 1,          CURRENT_DATE, 1,              CURRENT_DATE ),
                     ('Lore and History Pack', 'This is a short description lorem ipsum set dolor', 'this is a long description lorem ipsum set dolor', 5.99, 1,          CURRENT_DATE, 1,              CURRENT_DATE ),
                     ('Magic Item Compendium', 'This is a short description lorem ipsum set dolor', 'this is a long description lorem ipsum set dolor', 9.95, 1,          CURRENT_DATE, 1,              CURRENT_DATE ),
-                    ('Advanced Magic and Spells', 'This is a short description lorem ipsum set dolor', 'this is a long description lorem ipsum set dolor', 24.00, 1,          CURRENT_DATE, 1,              CURRENT_DATE ),
+                    ('Advanced Magic and Spells', 'This is a short description lorem ipsum set dolor', 'this is a long description lorem ipsum set dolor', 24.01, 1,          CURRENT_DATE, 1,              CURRENT_DATE ),
                     ('Manual of Advanced Maneuvers', 'This is a short description lorem ipsum set dolor', 'this is a long description lorem ipsum set dolor', 23.99, 1,          CURRENT_DATE, 1,              CURRENT_DATE ),
                     ('Dungeon Devlers Debreif', 'This is a short description lorem ipsum set dolor', 'this is a long description lorem ipsum set dolor', 39.95, 1,          CURRENT_DATE, 1,              CURRENT_DATE );
-                    
+
 
 CREATE TABLE user_orders (
     user_orders_id       SERIAL    CONSTRAINT user_orders_pk PRIMARY KEY    NOT NULL,

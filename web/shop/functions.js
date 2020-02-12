@@ -94,7 +94,7 @@ function addToCart(itemID) {
 
             //HTML Output
             document.getElementById("main").innerHTML = '<div id="item-' + itemID + 
-            '" class="item"><h2 id="item-name-' + itemID + '" class="item-name">Basic Rule Set</h2><img id="item-image-' + itemID + '" src="' + image + '" height="100px" style="float: right;"><p id="item-description-' + itemID + '">' + description +
+            '" class="item"><h2 id="item-name-' + itemID + '" class="item-name">' + name + '</h2><img id="item-image-' + itemID + '" src="' + image + '" height="100px" style="float: right;"><p id="item-description-' + itemID + '">' + description +
             '</p><h3 id="item-price-' + itemID + '" class="item-price">Price: ' + price + '</h3> <button id="button'+ itemID +'" onclick="addToCart('+ itemID +')"><span>Add to Cart</span></button></div>' +  document.getElementById("main").innerHTML;
         }
         //Remove Item From Cart
