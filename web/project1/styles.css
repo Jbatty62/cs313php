@@ -37,3 +37,11 @@ body {
     background-color: var(--color-2);
 
 }
+
+.accordion {
+    
+    flex-grow: 1;
+    margin: 15px;
+    background-color: var(--color-2);
+
+}
