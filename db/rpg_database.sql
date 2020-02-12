@@ -155,7 +155,7 @@ CREATE TABLE games (
 INSERT INTO games (owner_id, name, created_by, created_date, last_updated_by, last_updated_date)
 VALUES            (1,        'Adventures in Sogored', 1, CURRENT_DATE, 1, CURRENT_DATE);
 
-CREATE TABLE parties (
+CREATE TABLE party_members (
     game_id  INTEGER CONSTRAINT parties_fk1 REFERENCES games(game_id),
     player_id INTEGER CONSTRAINT parties_fk2 REFERENCES user_accounts(user_account_id),
     created_by  INTEGER     NOT NULL,

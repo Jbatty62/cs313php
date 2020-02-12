@@ -9,6 +9,15 @@
 </head>
 <body>
     <?php include 'nav.php'; ?>
+
+    <main id="main">
+
+            <?php
+                foreach ($db->query('SELECT * FROM games') as $row) {               
+                    echo '<div class="accordion">'. '<h2 class="name">'. $row['name'] . '</div>';
+                }
+            ?>
+        </main>
     
     
 </body>
