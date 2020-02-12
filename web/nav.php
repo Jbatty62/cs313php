@@ -1,7 +1,7 @@
 <nav>
     <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="shop.php">Shop</a></li>
+    <li><a href="/shop/">Shop</a></li>
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Rules and Content</a>
         <div class="dropdown-content">

@@ -70,10 +70,17 @@ CREATE TABLE character_races (
     last_updated_date DATE
 );
 
+INSERT INTO character_races (module_id, name, description, strength_cost_adjust, dexterity_cost_adjust, constitution_cost_adjust, speed_cost_adjust, wit_cost_adjust, intelligence_cost_adjust, wisdom_cost_adjust, charisma_cost_adjust, created_by, created_date, last_updated_by, last_updated_date)
+VALUES  (1, 'Human','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (1, 'Dwarf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (1, 'Orc','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (1, 'Dragonborn','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (1, 'Elf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE);
 
 CREATE TABLE character_spells (
     character_spells_id    SERIAL      CONSTRAINT character_spells_pk PRIMARY KEY  NOT NULL,
     module_id        INTEGER            CONSTRAINT character_spells_fk REFERENCES modules(module_id) NOT NULL,
+    name                VARCHAR(30) NOT NULL,
     xp_cost   INTEGER NOT NULL,
     description TEXT,
     created_by  INTEGER,
@@ -81,10 +88,14 @@ CREATE TABLE character_spells (
     last_updated_by INTEGER,
     last_updated_date DATE
 );
+
+INSERT INTO character_spells (module_id, name, xp_cost, description, created_by, created_date, last_updated_by, last_updated_date) 
+VALUES                       (1,         'fireball', 100, 'You throw a ball of firey death at your opponenets dealing 3d3 + your spellcasting ability damage', 1, CURRENT_DATE, 1, CURRENT_DATE);
 
 CREATE TABLE character_classes (
     character_classes_id        SERIAL    CONSTRAINT character_classes_pk PRIMARY KEY,
     module_id                   INTEGER     CONSTRAINT character_classes_fk REFERENCES modules(module_id) NOT NULL,
+    name                VARCHAR(30) NOT NULL,
     xp_cost   INTEGER NOT NULL,
     description TEXT,
     created_by  INTEGER,
@@ -92,10 +103,15 @@ CREATE TABLE character_classes (
     last_updated_by INTEGER,
     last_updated_date DATE
 );
+
+INSERT INTO character_classes (module_id, name, xp_cost, description, created_by, created_date, last_updated_by, last_updated_date) 
+VALUES                       (1,         'Warrior', 1000, 'You have learned to fight people with weapons and with other fighty things...', 1, CURRENT_DATE, 1, CURRENT_DATE);
+
 
 CREATE TABLE character_abilities (
     character_abilities_id        SERIAL     CONSTRAINT character_abilities_pk PRIMARY KEY,
     module_id                   INTEGER     CONSTRAINT character_abilities_fk REFERENCES modules(module_id) NOT NULL,
+    name                VARCHAR(30) NOT NULL,
     xp_cost   INTEGER NOT NULL,
     description TEXT,
     created_by  INTEGER,
@@ -105,30 +121,39 @@ CREATE TABLE character_abilities (
 
 );
 
+INSERT INTO character_abilities (module_id, name, xp_cost, description, created_by, created_date, last_updated_by, last_updated_date) 
+VALUES                       (1,         'Charge', 150, 'You rush at your enemy, and may attack without expending an action point if you advance more than 30 feet in a straight line to reach your opponent', 1, CURRENT_DATE, 1, CURRENT_DATE);
+
+
 CREATE TABLE items (
-    items_id        SERIAL     CONSTRAINT items_pk PRIMARY KEY,
-    module_id                   INTEGER     CONSTRAINT items_fk REFERENCES modules(module_id) NOT NULL,
-    xp_cost   INTEGER NOT NULL,
-    description TEXT,
-    created_by  INTEGER     NOT NULL,
-    created_date DATE       NOT NULL,
-    last_updated_by INTEGER NOT NULL,
-    last_updated_date DATE  NOT NULL
+    items_id            SERIAL      CONSTRAINT items_pk PRIMARY KEY,
+    module_id           INTEGER     CONSTRAINT items_fk REFERENCES modules(module_id) NOT NULL,
+    name                VARCHAR(30) NOT NULL,
+    gold_value          INTEGER,
+    description         TEXT,
+    created_by          INTEGER     NOT NULL,
+    created_date        DATE        NOT NULL,
+    last_updated_by     INTEGER     NOT NULL,
+    last_updated_date   DATE        NOT NULL
 
 );
 
+INSERT INTO items (module_id, name, gold_value, description, created_by, created_date, last_updated_by, last_updated_date) 
+VALUES                       (1,         'Healing Potion', 100, 'If you drink this, you will probably regrow a limb or something', 1, CURRENT_DATE, 1, CURRENT_DATE);
 
-CREATE SEQUENCE items_sequence START WITH 1001;
 
 CREATE TABLE games (
     game_id SERIAL CONSTRAINT games_pk PRIMARY KEY,
     owner_id INTEGER CONSTRAINT games_fk1 REFERENCES user_accounts(user_account_id),
+    name                VARCHAR(30) NOT NULL,
     created_by  INTEGER     NOT NULL,
     created_date DATE       NOT NULL,
     last_updated_by INTEGER NOT NULL,
     last_updated_date DATE  NOT NULL
  
 );
+INSERT INTO games (owner_id, name, created_by, created_date, last_updated_by, last_updated_date)
+VALUES            (1,        'Adventures in Sogored', 1, CURRENT_DATE, 1, CURRENT_DATE);
 
 CREATE TABLE parties (
     game_id  INTEGER CONSTRAINT parties_fk1 REFERENCES games(game_id),
