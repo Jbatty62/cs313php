@@ -46,7 +46,7 @@ $total = 0;
                     
                     <p id="total-wrapper"><span id="total">Total: $<?php echo number_format($total, 2);?></span></p>
                     <a href="."><button style="float:left;clear:both;"><span>Continue Shopping</span></button></a>
-                    <a href="./checkout.php"; ?>"><button style="float:right;clear:right;"><span>Proceed to Checkout</span></button></a>
+                    <a href="./checkout.php"><button style="float:right;clear:right;"><span>Proceed to Checkout</span></button></a>
                     
                     
                 </div>
