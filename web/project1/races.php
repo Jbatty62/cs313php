@@ -34,7 +34,7 @@ catch (PDOException $ex)
 </head>
 <body>
     <div id="container">
-        <?php include nav.php; ?>
+        <?php include 'nav.php'; ?>
         <main id="main">
 
             <?php
