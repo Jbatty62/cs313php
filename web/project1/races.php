@@ -34,7 +34,9 @@ catch (PDOException $ex)
 </head>
 <body>
     <div id="container">
+        <?php include nav.php; ?>
         <main id="main">
+
             <?php
                 foreach ($db->query('SELECT * FROM character_races') as $row) {               
                     echo '<div class="accordion">'. '<h2 class="name">'.$row['name'] .'</h2> <p class="description"> '. $row['description'] .'</p>' .
