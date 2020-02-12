@@ -25,7 +25,7 @@
                 
                     <?php
                     echo "main php block";
-/*
+
                             foreach ($db->query('SELECT * FROM modules') as $row) {
                                 echo "in ForEach";
                                 
@@ -40,7 +40,7 @@
                                     '</div>';
                                 }
                             }
-*/
+
 
                     ?>
 
