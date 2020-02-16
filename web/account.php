@@ -15,44 +15,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script type="text/jscript" src="functions.js"></script>
         <style> 
-        
-/***************************
-* Form Styles --->
-***************************/
 
-
-.form-group {
-  margin: 30px auto;
-  width: 450px;
-}
-
-input {
-    margin: 5px 5px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #555;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.25);
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    float: left;
-}
-
-#submit {
-  border-radius: 4px;
-  background-color: var(--color-2);
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 18px;
-  padding: 8px;
-  transition: all 0.5s;
-  cursor: pointer;
-  float:right;
-}
-    
         </style>
     </head>
     <body>
@@ -62,35 +25,129 @@ input {
             <main id="main">
                 <div style="margin: auto;">
                     <h1>My Account</h1>
-                    <form id="form" class="form-group" method="get" action="thankyou.php">
-                        <h2>Basic Information</h2>
-                        <input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name">
-                        <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Last Name">
-
-                        <h2>Contact Information</h2>
-
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Email Address">
-                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number">
-
-                        <h2>Shipping Address</h2>
-                        <input type="text" name="street" class="form-control" id="street"  placeholder="Street">
-
-                        <input type="text" name="city" class="form-control" id="city" placeholder="City">
-
-                        <input type="text" name="state" class="form-control" id="state" placeholder="State">
-
-                        <input type="text" name="zip" class="form-control" id="zip" placeholder="Zip">
-
-                        <input type="text" name="county" class="form-control" id="county" placeholder="County">
-                        <input type="text" name="country" class="form-control" id="country" placeholder="Country">
-                        <input id="submit" type="submit" value="Complete Purchase">
-
-                        <h2>Login Information</h2>
-                        <p>Username: </p>
-                        <p>Update Password</p>
-                        <input type="password" name="password" id="">
-                    </form>
                     
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Basic Information</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="firstName">First Name</label>  
+                        <div class="col-md-4">
+                        <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md">
+                        <span class="help-block">help</span>  
+                        </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="lastName">Last Name</label>  
+                        <div class="col-md-4">
+                        <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md">
+                        <span class="help-block">help</span>  
+                        </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="updateBasicInfo"></label>
+                        <div class="col-md-4">
+                            <button id="updateBasicInfo" name="updateBasicInfo" class="btn btn-primary">Update</button>
+                        </div>
+                        </div>
+
+                        </fieldset>
+                    </form>
+
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Contact Information</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="email">Email</label>  
+                        <div class="col-md-4">
+                        <input id="email" name="email" type="text" placeholder="Email Address" class="form-control input-md">
+                        <span class="help-block">help</span>  
+                        </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="phone">Phone</label>  
+                        <div class="col-md-4">
+                        <input id="phone" name="phone" type="text" placeholder="Phone Number" class="form-control input-md">
+                        <span class="help-block">help</span>  
+                        </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="updateContactInfo">Update Contact Info</label>
+                        <div class="col-md-4">
+                            <button id="updateContactInfo" name="updateContacntInfo" class="btn btn-primary">Update</button>
+                        </div>
+                        </div>
+
+                        </fieldset>
+                    </form>
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Login Information</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="userName">Username</label>  
+                        <div class="col-md-4">
+                        <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md">
+                        <span class="help-block">help</span>  
+                        </div>
+                        </div>
+
+                        <!-- Password input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="currentPassword">Current Password</label>
+                        <div class="col-md-4">
+                            <input id="currentPassword" name="currentPassword" type="password" placeholder="Current Password" class="form-control input-md">
+                            <span class="help-block">help</span>
+                        </div>
+                        </div>
+
+                        <!-- Password input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="newPassword">New Password</label>
+                        <div class="col-md-4">
+                            <input id="newPassword" name="newPassword" type="password" placeholder="New Password" class="form-control input-md">
+                            <span class="help-block">help</span>
+                        </div>
+                        </div>
+
+                        <!-- Password input-->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="confirmNewPassword">Confirm New Password</label>
+                        <div class="col-md-4">
+                            <input id="confirmNewPassword" name="confirmNewPassword" type="password" placeholder="Confirm New Password" class="form-control input-md">
+                            <span class="help-block">help</span>
+                        </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                        <label class="col-md-4 control-label" for="updatePassword"></label>
+                        <div class="col-md-4">
+                            <button id="updatePassword" name="updatePassword" class="btn btn-primary">Update</button>
+                        </div>
+                        </div>
+
+                        </fieldset>
+                    </form>
+
                     
                     
                 </div>
