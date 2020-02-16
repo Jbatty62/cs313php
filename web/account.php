@@ -12,7 +12,6 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
 <html>
     <head>
         <title>The Last Stand RPG | My Account</title>
-        <link rel="stylesheet" type="text/css" href="styles.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
         <script type="text/jscript" src="functions.js"></script>
         <style> 
