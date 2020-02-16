@@ -177,3 +177,7 @@ CREATE TABLE party_members (
 /* SOME INFO TO INSERT */ 
 
 
+/*Alter User First_Name */
+UPDATE user_accounts
+SET first_name = 'Jhon'
+WHERE user_account_id = 2;

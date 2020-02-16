@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+if (isset($_POST[firstName])) {
+    $stmt = $db->prepare('UPDATE user_accounts SET first_name = :first_name WHERE user_account_id = :id;');
+    $stmt->bindParam(':first_name', $_POST['firstName']);
+    $stmt->bindParam(':id', $_SESSION["id"]);
+    $stmt->execute();
+}
+
+
+
 
 if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
     header("location: login.php");
@@ -40,7 +49,7 @@ else {
             <main id="main" style="padding: 0 50px;">
                 <h1>My Account</h1>
                 
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="account.php" method="post">
                     <fieldset>
 
                     <!-- Form Name -->
