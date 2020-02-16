@@ -12,7 +12,7 @@ $total = 0;
         <script type="text/jscript" src="functions.js"></script>
     </head>
     <body>
-        <?php include 'nav.php'; ?>
+    <?php include '../nav.php';  ?>
         <div id=container>
         
             <main id="main">
