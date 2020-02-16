@@ -17,6 +17,13 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
             $stmt->execute();
         }
 
+        if (isset($_POST[lastName])) {
+            $stmt = $db->prepare('UPDATE user_accounts SET last_name = :last_name WHERE user_account_id = :id;');
+            $stmt->bindParam(':last_name', $_POST['lastName']);
+            $stmt->bindParam(':id', $_SESSION["id"]);
+            $stmt->execute();
+        }
+
     $sql = 'SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION["id"];
     $row = $db->query($sql)->fetch();
 
@@ -67,7 +74,7 @@ else {
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="lastName">Last Name</label>  
                     <div class="col-md-4">
-                    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" value="<?php echo 'Batty';?>">
+                    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" value="<?php echo $last_name;?>">
                     <span class="help-block"></span>  
                     </div>
                     </div>
@@ -93,7 +100,7 @@ else {
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="userName">Username</label>  
                     <div class="col-md-4">
-                    <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md" value="<?php echo $row['username'];?>">
+                    <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md" value="<?php echo $userName;?>">
                     <span class="help-block"></span>  
                     </div>
                     </div>
