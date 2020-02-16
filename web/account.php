@@ -57,15 +57,22 @@ input {
     </head>
     <body>
     <?php include '/nav.php';  ?>
-        <div id=container>
+        <div id="container">
         
             <main id="main">
                 <div style="margin: auto;">
                     <h1>My Account</h1>
                     <form id="form" class="form-group" method="get" action="thankyou.php">
-                        <p>Basic Information</p>
+                        <h2>Basic Information</h2>
                         <input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name">
                         <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Last Name">
+
+                        <h2>Contact Information</h2>
+
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Email Address">
+                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number">
+
+                        <h2>Shipping Address</h2>
                         <input type="text" name="street" class="form-control" id="street"  placeholder="Street">
 
                         <input type="text" name="city" class="form-control" id="city" placeholder="City">
@@ -77,6 +84,11 @@ input {
                         <input type="text" name="county" class="form-control" id="county" placeholder="County">
                         <input type="text" name="country" class="form-control" id="country" placeholder="Country">
                         <input id="submit" type="submit" value="Complete Purchase">
+
+                        <h2>Login Information</h2>
+                        <p>Username: </p>
+                        <p>Update Password</p>
+                        <input type="password" name="password" id="">
                     </form>
                     
                     
