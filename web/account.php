@@ -34,19 +34,19 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
         if (isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['confirmNewPassword'])) {
 
                 // Validate new password
-                if(empty(trim($_POST["new_password"]))){
+                if(empty(trim($_POST["newPassword"]))){
                     $new_password_err = "Please enter the new password.";     
-                } else if(strlen(trim($_POST["new_password"])) < 6) {
+                } else if(strlen(trim($_POST["newPassword"])) < 6) {
                     $new_password_err = "Password must have atleast 6 characters.";
                 } else {
-                    $new_password = trim($_POST["new_password"]);
+                    $new_password = trim($_POST["newPassword"]);
                 }
                 
                 // Validate confirm password
-                if(empty(trim($_POST["confirm_password"]))){
+                if(empty(trim($_POST["confirmNewPassword"]))){
                     $confirm_password_err = "Please confirm the password.";
                 } else{
-                    $confirm_password = trim($_POST["confirm_password"]);
+                    $confirm_password = trim($_POST["confirmNewPassword"]);
                     if(empty($new_password_err) && ($new_password != $confirm_password)){
                         $confirm_password_err = "Password did not match.";
                     }
@@ -155,7 +155,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="userName">Username</label>  
                     <div class="col-md-4">
-                    <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md" value="<?php echo $userName;?>">
+                    <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" value="<?php echo $userName;?>">
                     <span class="help-block"><?php echo $username_err; ?></span>  
                     </div>
                     </div>
