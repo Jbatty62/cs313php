@@ -10,19 +10,65 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
 
     if (isset($_SESSION["id"])) {
 
-        if (isset($_POST[firstName])) {
+        if (isset($_POST['firstName'])) {
             $stmt = $db->prepare('UPDATE user_accounts SET first_name = :first_name WHERE user_account_id = :id;');
             $stmt->bindParam(':first_name', $_POST['firstName']);
             $stmt->bindParam(':id', $_SESSION["id"]);
             $stmt->execute();
         }
 
-        if (isset($_POST[lastName])) {
+        if (isset($_POST['lastName'])) {
             $stmt = $db->prepare('UPDATE user_accounts SET last_name = :last_name WHERE user_account_id = :id;');
             $stmt->bindParam(':last_name', $_POST['lastName']);
             $stmt->bindParam(':id', $_SESSION["id"]);
             $stmt->execute();
         }
+
+        if (isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['confirmNewPassword'])) {
+
+                // Validate new password
+                if(empty(trim($_POST["new_password"]))){
+                    $new_password_err = "Please enter the new password.";     
+                } else if(strlen(trim($_POST["new_password"])) < 6) {
+                    $new_password_err = "Password must have atleast 6 characters.";
+                } else {
+                    $new_password = trim($_POST["new_password"]);
+                }
+                
+                // Validate confirm password
+                if(empty(trim($_POST["confirm_password"]))){
+                    $confirm_password_err = "Please confirm the password.";
+                } else{
+                    $confirm_password = trim($_POST["confirm_password"]);
+                    if(empty($new_password_err) && ($new_password != $confirm_password)){
+                        $confirm_password_err = "Password did not match.";
+                    }
+                 }
+                
+                 // Check input errors before updating the database
+                if(empty($new_password_err) && empty($confirm_password_err)){
+                    // Prepare an update statement
+                    $sql = "UPDATE user_accounts SET password = :password WHERE id = :id";
+                    
+                    if($stmt = $pdo->prepare($sql)){
+                        // Bind variables to the prepared statement as parameters
+                        $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
+                        $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
+                        
+                        // Set parameters
+                        $param_password = password_hash($new_password, PASSWORD_DEFAULT);
+                        $param_id = $_SESSION["id"];
+                        
+                        $stmt->execute();
+
+                        // Close statement
+                        unset($stmt);
+                    }
+                }
+        }
+
+    }
+}
 
     $sql = 'SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION["id"];
     $row = $db->query($sql)->fetch();
@@ -74,7 +120,7 @@ else {
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="lastName">Last Name</label>  
                     <div class="col-md-4">
-                    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" value="<?php echo $last_name;?>">
+                    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" value="<?php echo $lastName;?>">
                     <span class="help-block"></span>  
                     </div>
                     </div>
