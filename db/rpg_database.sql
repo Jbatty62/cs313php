@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS party_members CASCADE;
 CREATE TABLE user_accounts (
     user_account_id     SERIAL     CONSTRAINT user_accounts_pk PRIMARY KEY   NOT NULL,
     username    VARCHAR             CONSTRAINT user_accounts_uc UNIQUE        NOT NULL,
+    password    VARCHAR     NOT NULL,
     first_name  VARCHAR,
     last_name   VARCHAR,
     created_by  INTEGER,
