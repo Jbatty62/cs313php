@@ -7,8 +7,8 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
     exit;
 } else {
     include 'connect.php';
-    
-    $row = $db->query('SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION['id']);
+    $sql = 'SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION['id'];
+    $row = $db->query($sql);
 }
 
 ?>
