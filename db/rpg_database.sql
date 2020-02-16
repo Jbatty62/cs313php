@@ -21,8 +21,8 @@ CREATE TABLE user_accounts (
     last_updated_date DATE
 );
 
-INSERT INTO user_accounts (username, first_name, last_name, created_by, created_date, last_updated_by, last_updated_date) VALUES
-                          ('admin',  'John',     'Batty',   1,          CURRENT_DATE, 1,              CURRENT_DATE );
+INSERT INTO user_accounts (username, password, first_name, last_name, created_by, created_date, last_updated_by, last_updated_date) VALUES
+                          ('admin', 'badSecurityPractice' ,'John',     'Batty',   1,          CURRENT_DATE, 1,              CURRENT_DATE );
 
 CREATE TABLE modules (
     module_id      SERIAL        CONSTRAINT modules_pk PRIMARY KEY   NOT NULL,
