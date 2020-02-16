@@ -25,7 +25,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
         }
 
         if (isset($_POST['username'])) {
-            $stmt = $db->prepare('UPDATE user_accounts SET last_name = :username WHERE user_account_id = :id;');
+            $stmt = $db->prepare('UPDATE user_accounts SET username = :username WHERE user_account_id = :id;');
             $stmt->bindParam(':username', $_POST['username']);
             $stmt->bindParam(':id', $_SESSION["id"]);
             $stmt->execute();
