@@ -158,7 +158,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <label class="col-md-4 control-label" for="currentPassword">Current Password</label>
                     <div class="col-md-4">
                         <input id="currentPassword" name="currentPassword" type="password" placeholder="Current Password" class="form-control input-md">
-                        <span class="help-block"></span>
+                        <span class="help-block"><?php echo $new_password_err; ?></span>
                     </div>
                     </div>
 
@@ -167,7 +167,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <label class="col-md-4 control-label" for="newPassword">New Password</label>
                     <div class="col-md-4">
                         <input id="newPassword" name="newPassword" type="password" placeholder="New Password" class="form-control input-md">
-                        <span class="help-block"></span>
+                        <span class="help-block"><?php echo $new_password_err; ?></span>
                     </div>
                     </div>
 
@@ -176,7 +176,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <label class="col-md-4 control-label" for="confirmNewPassword">Confirm New Password</label>
                     <div class="col-md-4">
                         <input id="confirmNewPassword" name="confirmNewPassword" type="password" placeholder="Confirm New Password" class="form-control input-md">
-                        <span class="help-block"></span>
+                        <span class="help-block"><?php echo $confirm_password_err; ?></span>
                     </div>
                     </div>
 
