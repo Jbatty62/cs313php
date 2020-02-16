@@ -24,6 +24,13 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
             $stmt->execute();
         }
 
+        if (isset($_POST['username'])) {
+            $stmt = $db->prepare('UPDATE user_accounts SET last_name = :username WHERE user_account_id = :id;');
+            $stmt->bindParam(':username', $_POST['username']);
+            $stmt->bindParam(':id', $_SESSION["id"]);
+            $stmt->execute();
+        }
+
         if (isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['confirmNewPassword'])) {
 
                 // Validate new password
@@ -149,7 +156,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <label class="col-md-4 control-label" for="userName">Username</label>  
                     <div class="col-md-4">
                     <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md" value="<?php echo $userName;?>">
-                    <span class="help-block"><?php echo $new_password_err; ?></span>  
+                    <span class="help-block"><?php echo $username_err; ?></span>  
                     </div>
                     </div>
 
@@ -175,7 +182,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <label class="col-md-4 control-label" for="currentPassword">Current Password</label>
                     <div class="col-md-4">
                         <input id="currentPassword" name="currentPassword" type="password" placeholder="Current Password" class="form-control input-md">
-                        <span class="help-block"><?php echo $new_password_err; ?></span>
+                        <span class="help-block"><?php echo $current_password_err; ?></span>
                     </div>
                     </div>
 
