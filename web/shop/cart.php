@@ -1,7 +1,8 @@
 <?php 
-
 session_start();
 
+// Connect to Database
+require_once "connect.php";
 
 $total = 0;
 

@@ -1,6 +1,12 @@
 <?php
 session_start();
-include 'connect.php'
+include 'connect.php';
+
+if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
+    header("location: login.php");
+    exit;
+}
+
 ?>
 
 <html>
@@ -18,38 +24,6 @@ include 'connect.php'
 .form-group {
   margin: 30px auto;
   width: 450px;
-}
-
-#street {
-  width: calc(100% - 10px);
-}
-
-#city {
-  width: 50%;
-}
-
-#state {
-  width: 15%;
-}
-
-#zip {
-  width: calc(100% - 50% - 15% - 31px);
-}
-
-#county {
-  width: 45%;
-}
-
-#country {
-  width: calc(100% - 45% - 20px);
-}
-
-#firstname {
-  width: calc(50% - 10px);
-}
-
-#lastname {
-  width: calc(50% - 10px);
 }
 
 input {
@@ -87,8 +61,9 @@ input {
         
             <main id="main">
                 <div style="margin: auto;">
-                    <h1>Checkout</h1>
+                    <h1>My Account</h1>
                     <form id="form" class="form-group" method="get" action="thankyou.php">
+                        <p>Basic Information</p>
                         <input type="text" name="firstname" class="form-control" id="firstname" placeholder="First Name">
                         <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Last Name">
                         <input type="text" name="street" class="form-control" id="street"  placeholder="Street">
@@ -103,7 +78,6 @@ input {
                         <input type="text" name="country" class="form-control" id="country" placeholder="Country">
                         <input id="submit" type="submit" value="Complete Purchase">
                     </form>
-                    <p id="total">Total: $99.99</p>
                     
                     
                     
