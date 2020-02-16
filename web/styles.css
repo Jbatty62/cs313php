@@ -110,6 +110,7 @@ nav {
 
 nav button {
   border-radius: 0;
+  height:100%;
 }
 
 #sign-in-button, #sign-out-button {

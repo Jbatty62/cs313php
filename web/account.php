@@ -1,10 +1,14 @@
 <?php
 session_start();
-include 'connect.php';
+
 
 if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
     header("location: login.php");
     exit;
+} else {
+    include 'connect.php';
+    
+    $row = $db->query('SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION['id']);
 }
 
 ?>
@@ -36,7 +40,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="firstName">First Name</label>  
                     <div class="col-md-4">
-                    <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md">
+                    <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md" value="<?php echo $row['first_name'];?>">
                     <span class="help-block"></span>  
                     </div>
                     </div>
@@ -45,7 +49,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="lastName">Last Name</label>  
                     <div class="col-md-4">
-                    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md">
+                    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" value="<?php echo 'Batty';?>">
                     <span class="help-block"></span>  
                     </div>
                     </div>
@@ -71,7 +75,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="userName">Username</label>  
                     <div class="col-md-4">
-                    <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md">
+                    <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md" value="<?php echo $row['username'];?>">
                     <span class="help-block"></span>  
                     </div>
                     </div>
