@@ -20,7 +20,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
         </style>
     </head>
     <body>
-    <?php include '/nav.php';  ?>
+    <?php include 'nav.php';  ?>
         <div id="container">
         
             <main id="main" style="padding: 0 50px;">
@@ -60,41 +60,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
 
                     </fieldset>
                 </form>
-
-                <form class="form-horizontal">
-                    <fieldset>
-
-                    <!-- Form Name -->
-                    <legend>Contact Information</legend>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Email</label>  
-                    <div class="col-md-4">
-                    <input id="email" name="email" type="text" placeholder="Email Address" class="form-control input-md">
-                    <span class="help-block"></span>  
-                    </div>
-                    </div>
-
-                    <!-- Text input-->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label" for="phone">Phone</label>  
-                    <div class="col-md-4">
-                    <input id="phone" name="phone" type="text" placeholder="Phone Number" class="form-control input-md">
-                    <span class="help-block"></span>  
-                    </div>
-                    </div>
-
-                    <!-- Button -->
-                    <div class="form-group">
-                    <label class="col-md-4 control-label" for="updateContactInfo">Update Contact Info</label>
-                    <div class="col-md-4">
-                        <button id="updateContactInfo" name="updateContacntInfo" class="btn btn-primary">Update</button>
-                    </div>
-                    </div>
-
-                    </fieldset>
-                </form>
+                
                 <form class="form-horizontal">
                     <fieldset>
 
