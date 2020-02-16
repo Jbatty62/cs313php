@@ -11,6 +11,10 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
     if (isset($_SESSION["id"])) {
     $sql = 'SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION["id"];
     $row = $db->query($sql);
+
+    $firstName = $row["first_name"];
+    $lastName = $row["last_name"];
+    $userName = $row["username"];
 }
 else {
     echo 'Something has gone terribly wrong...';
@@ -46,7 +50,7 @@ else {
                     <div class="form-group">
                     <label class="col-md-4 control-label" for="firstName">First Name</label>  
                     <div class="col-md-4">
-                    <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md" value="<?php echo $row['first_name'];?>">
+                    <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md" value="<?php echo $firstName; ?>">
                     <span class="help-block"></span>  
                     </div>
                     </div>
