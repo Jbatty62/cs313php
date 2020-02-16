@@ -138,7 +138,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     </fieldset>
                 </form>
 
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="account.php" method="post">
                     <fieldset>
 
                     <!-- Form Name -->
@@ -149,9 +149,26 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     <label class="col-md-4 control-label" for="userName">Username</label>  
                     <div class="col-md-4">
                     <input id="userName" name="userName" type="text" placeholder="Username" class="form-control input-md" value="<?php echo $userName;?>">
-                    <span class="help-block"></span>  
+                    <span class="help-block"><?php echo $new_password_err; ?></span>  
                     </div>
                     </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                    <label class="col-md-4 control-label" for="updatePassword"></label>
+                    <div class="col-md-4">
+                        <button id="updatePassword" name="updatePassword" class="btn btn-primary">Update</button>
+                    </div>
+                    </div>
+
+                    </fieldset>
+                </form>
+
+                <form class="form-horizontal" action="account.php" method="post">>
+                    <fieldset>
+
+                    <!-- Form Name -->
+                    <legend>Change Password</legend>
 
                     <!-- Password input-->
                     <div class="form-group">
