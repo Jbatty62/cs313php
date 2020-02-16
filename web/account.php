@@ -1,23 +1,22 @@
 <?php
 session_start();
 
-if (isset($_POST[firstName])) {
-    $stmt = $db->prepare('UPDATE user_accounts SET first_name = :first_name WHERE user_account_id = :id;');
-    $stmt->bindParam(':first_name', $_POST['firstName']);
-    $stmt->bindParam(':id', $_SESSION["id"]);
-    $stmt->execute();
-}
-
-
-
 
 if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
     header("location: login.php");
     exit;
 } else {
-    include 'connect.php';
+    require_once 'connect.php';
 
     if (isset($_SESSION["id"])) {
+
+        if (isset($_POST[firstName])) {
+            $stmt = $db->prepare('UPDATE user_accounts SET first_name = :first_name WHERE user_account_id = :id;');
+            $stmt->bindParam(':first_name', $_POST['firstName']);
+            $stmt->bindParam(':id', $_SESSION["id"]);
+            $stmt->execute();
+        }
+
     $sql = 'SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION["id"];
     $row = $db->query($sql)->fetch();
 
