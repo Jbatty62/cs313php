@@ -10,7 +10,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
 
     if (isset($_SESSION["id"])) {
     $sql = 'SELECT * FROM user_accounts WHERE user_account_id =' . $_SESSION["id"];
-    $row = $db->query($sql);
+    $row = $db->query($sql)->fetch();
 
     $firstName = $row["first_name"];
     $lastName = $row["last_name"];
