@@ -16,6 +16,8 @@
     </ul>
     <?php 
 
+    echo $_SERVER['DOCUMENT_ROOT'];
+
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         echo '<a href="logout.php"><button id="sign-out-button">Sign Out</button></a>';
     }
