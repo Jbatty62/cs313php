@@ -57,7 +57,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     // Prepare an update statement
                     $sql = "UPDATE user_accounts SET password = :password WHERE id = :id";
                     
-                    if($stmt = $pdo->prepare($sql)){
+                    if($stmt = $db->prepare($sql)){
                         // Bind variables to the prepared statement as parameters
                         $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
                         $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
