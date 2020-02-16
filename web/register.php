@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username_err = "Please enter a username.";
     } else{
         // Prepare a select statement
-        $sql = "SELECT id FROM user_accounts WHERE username = :username";
+        $sql = "SELECT user_account_id FROM user_accounts WHERE username = :username";
         
         if($stmt = $db->prepare($sql)){
             // Bind variables to the prepared statement as parameters
