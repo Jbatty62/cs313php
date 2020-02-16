@@ -55,7 +55,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                  // Check input errors before updating the database
                 if(empty($new_password_err) && empty($confirm_password_err)){
                     // Prepare an update statement
-                    $sql = "UPDATE user_accounts SET password = :password WHERE id = :id";
+                    $sql = "UPDATE user_accounts SET password = :password WHERE user_account_id = :id";
                     
                     if($stmt = $db->prepare($sql)){
                         // Bind variables to the prepared statement as parameters
