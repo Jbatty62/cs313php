@@ -51,7 +51,8 @@ function Dice(numSides, minimum) {
         
         this.value = value;
         var imageName = this.numSides + "sided" + value;
-        document.getElementById(this.id).innerHTML = '<img src="' + imageName + '.png" width=50 height=50> <h2>' + value + '</h2>';
+        console.log(imageName);
+        document.getElementById(this.id).innerHTML = '<img src="' + imageName + '.jpg" width=50 height=50> <h2>';
         
         
     };
@@ -67,8 +68,7 @@ function Dice(numSides, minimum) {
         var dom = document.createElement("div");
         dom.setAttribute("id",this.id);
         dom.setAttribute("class","dice");
-        let imageName = this.numSides + "sided0";
-        //dom.innerHTML = '<img src="' + imageName + '.png" width=50 height=50><h1>' + this. + '</h1>';
+        dom.innerHTML = '<img src="3sided0.jpg" width=50 height=50>';
 
         this.dom = dom;
 
@@ -180,7 +180,7 @@ function Board (diceSets) {
         for (let i = 0; i < diceSets.length; i++) {
             if (diceSets[i].id === diceSetID) {
                 console.log("in board.add dice")
-                board.diceSets[i].addDice(2,1);
+                board.diceSets[i].addDice(3,0);
             }
         } 
     };
