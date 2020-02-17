@@ -1,31 +1,36 @@
-"use strict";
 
-function removeDice(diceSetID) {
-    var diceSet = document.getElementById(diceSetID);
-    
-    diceSet.removeChild(diceSet.getElementsByClassName("dice")[0]);
+{
+let dice = [new Dice(3, 0), new Dice(3, 0),new Dice(3,0)],
+        diceSet = new DiceSet(dice, "Dice Set 1"),
+        diceSets = [diceSet];
+        
+var board = new Board(diceSets);
 }
 
+function removeDice(DiceSetId) {
+   board.removeDice(DiceSetId);
+}
+
+function addDice(diceSetID) {
+   board.addDice(diceSetID);
+}
+
+function rollAll(diceSetID) {
+   board.rollAll(diceSetID);
+ }
+
+/*
 function removeDiceSet(ID) {
     
     document.getElementById(ID).remove();
 }
 
-function addDice(diceSetID,numSides) {
-    var dice = document.createElement("div");
-    dice.setAttribute("class","dice");
-    dice.setAttribute("id", diceSetID + "-" + getNumDice(diceSetID));
-    
-    document.getElementById(diceSetID).appendChild(dice);
-    
-    //Create Dice Object
-    
-    
-}
+
 
 function getNumDice(diceSetI) {
     return 6;
 }
+*/
 
 
 
@@ -37,15 +42,16 @@ function getNumDice(diceSetI) {
 
 
 
-
-function Dice(numSides, minimum, id) {
+function Dice(numSides, minimum) {
     this.minimum = minimum;
     this.numSides = numSides;
-    this.id = id;
+    this.id = new Date().valueOf()+Math.random();
+    this.value = 0;
     this.setValue = function (value) {
         
+        this.value = value;
         var imageName = this.numSides + "sided" + value;
-        document.getElementById(this.id).innerHTML = '<img src="' + imageName + '.png" width=50 height=50>';
+        document.getElementById(this.id).innerHTML = '<img src="' + imageName + '.png" width=50 height=50> <h2>' + value + '</h2>';
         
         
     };
@@ -56,47 +62,141 @@ function Dice(numSides, minimum, id) {
         }
         this.setValue(roll);
         return roll;
-    };    
+    };
+    this.createDOM = function() {
+        var dom = document.createElement("div");
+        dom.setAttribute("id",this.id);
+        dom.setAttribute("class","dice");
+        let imageName = this.numSides + "sided0";
+        //dom.innerHTML = '<img src="' + imageName + '.png" width=50 height=50><h1>' + this. + '</h1>';
+
+        this.dom = dom;
+
+    }
+    this.dom = null;    
 } 
 
 function DiceSet(dice, name) {
     this.name = name;
     this.dice = dice;
+    this.id = new Date().valueOf() + Math.random();
     this.rollAll = function () {
         
         for (var i = 0; i < dice.length; i++){
             this.dice[i].roll();
-            
         }
     };
     
     this.addDice = function (numSides, minimum) {
         
-        var id = this.id + "dice" + (dice.length + 1);
-        var dice = new Dice(numSides, minimum, id);
-        this.dice.push(dice);
+        console.log("in Dice Set : Add Dice")
+        var newDice = new Dice(numSides, minimum);
+        newDice.createDOM();
+        this.dice.push(newDice);
+        document.getElementById(this.id).getElementsByClassName("diceContainer")[0].appendChild(newDice.dom);
         
     };
     
-    this.removeDice = function (id) {
-     document.getElementById(id).remove();
+    this.removeDice = function () {
+
+    let targetDice = dice.pop();
+    document.getElementById(targetDice.id).remove();
+     
     };
-}
+    this.createDOM = function () {
+        var dom = document.createElement("div");
+        dom.setAttribute("id",this.id);
+        dom.setAttribute("class","diceset");
 
 
-
-function initialize() {
-    
-    var dice = new Dice(3, 0),
-        diceSet = new DiceSet(dice, "Dice Set 1"),
-        board = [diceSet];
+        var minusButton = document.createElement("span");
+        minusButton.setAttribute("class", "minus");
+        minusButton.setAttribute("onclick", "removeDice(" + this.id + ")")
+        minusButton.innerHTML = "-";
         
-        for (var i = 0; i < board[0].length; i++) {
-            board[0].dice.setValue(0);
+
+        var plusButton = document.createElement("span");
+        plusButton.setAttribute("class", "plus");
+        plusButton.innerHTML = "+";
+        plusButton.setAttribute("onclick", "addDice(" + this.id + ")")
+
+        var rollAllButton = document.createElement("span");
+        rollAllButton.setAttribute("class", "plus");
+        rollAllButton.innerHTML = "Roll";
+        rollAllButton.setAttribute("onclick", "rollAll(" + this.id + ")")
+
+        var diceContainer = document.createElement("div");
+        diceContainer.setAttribute("class", "diceContainer");
+
+        for (let i = 0; i < dice.length; i++) {
+            console.log ("DiceSet Create Dom -- Add Dice HTML -- i= " + i);
+            dice[i].createDOM();
+            diceContainer.appendChild(dice[i].dom);
         }
-    
-Object.addEventListener("load", initialize())
-    
-    
-    
+
+        var xButton = document.createElement("span");
+        xButton.setAttribute("class", "close");
+        //xbutton.addEventListener("click", removeDiceSet(this.id))
+
+        dom.appendChild(minusButton);
+        dom.appendChild(plusButton);
+        dom.appendChild(rollAllButton);
+        dom.appendChild(diceContainer);
+        dom.appendChild(xButton);
+
+        
+        this.dom = dom;
+
+    };
+    this.dom = null;
+
 }
+
+
+function Board (diceSets) {
+    this.diceSets = diceSets;
+    this.display = function () {
+
+        document.getElementById("main").innerHTML = " ";
+            for (let i = 0; i < diceSets.length; i++) {
+                console.log("in Board.display()");
+                diceSets[i].createDOM();
+                document.getElementById("main").appendChild(diceSets[i].dom);
+            
+
+            }
+          
+
+    };
+    this.removeDice = function (diceSetID) {
+        for (let i = 0; i < diceSets.length; i++) {
+            if (diceSets[i].id === diceSetID) {
+                console.log("in board.removedice")
+                board.diceSets[i].removeDice();
+            }
+        } 
+    };
+    this.addDice = function (diceSetID) {
+        for (let i = 0; i < diceSets.length; i++) {
+            if (diceSets[i].id === diceSetID) {
+                console.log("in board.add dice")
+                board.diceSets[i].addDice(2,1);
+            }
+        } 
+    };
+
+    this.rollAll = function (diceSetID) {
+        for (let i = 0; i < diceSets.length; i++) {
+            if (diceSets[i].id === diceSetID) {
+                console.log("in board.add dice")
+                board.diceSets[i].rollAll();
+            }
+        } 
+    };
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    board.display();
+
+ }, false);
