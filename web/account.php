@@ -215,6 +215,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                     </fieldset>
                 </form>
                 <div id="modules-owned">
+                    <h2>Modules Owned</h2>
                     <table>
                         <tr>
                             <th>Order ID</th>
