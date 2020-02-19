@@ -6,7 +6,7 @@
     $total = 0;
     
 ?>
-<html>
+<html lang="en">
     <head>
         <title>CS 313 - Ponder 03</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
