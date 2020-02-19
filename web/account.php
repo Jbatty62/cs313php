@@ -223,14 +223,14 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                             <th>Cost</th>
                         </tr>
                         <?php
-                            $sql = 'SELECT * FROM user_orders WHERE user_account_id =' . $_SESSION["ID"];
+                            $sql = 'SELECT * FROM user_orders WHERE user_account_id = ' . $_SESSION["ID"];
                             foreach ($db->query($sql) as $row)
 
                             echo '<tr>' .
-                                    '<td>' . $row[order_id] . '</td>' .
-                                    '<td>' . $row[module_id] . '</td>' .
-                                    '<td>' . $row[time] . '</td>' .
-                                    '<td>'.$row[module_id] . '</td>' .
+                                    '<td>' . $row["user_orders_id"] . '</td>' .
+                                    '<td>' . $row["module_id"] . '</td>' .
+                                    '<td>' . $row["time"] . '</td>' .
+                                    '<td>'.$row["module_id"] . '</td>' .
                                  '</tr>';
 
                         ?>
