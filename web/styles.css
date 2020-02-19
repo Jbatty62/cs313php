@@ -175,3 +175,27 @@ nav ul {
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+
+/*******************************************************************
+* Table Styles
+*******************************************************************/
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    color: black;
+    margin-bottom: 75px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  th {
+    background-color: var(--color-3);
+    color: white;
+  }
