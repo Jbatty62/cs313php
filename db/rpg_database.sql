@@ -58,6 +58,12 @@ CREATE TABLE user_orders (
     last_updated_date DATE
 );
 
+INSERT INTO user_orders (user_account_id, module_id, time, created_by, created_date, last_updated_by, last_updated_date) VALUES
+                        (2,                1,        CURRENT_DATE,  1,          CURRENT_DATE, 1,              CURRENT_DATE           ),
+                        (1,                3,        CURRENT_DATE,  1,          CURRENT_DATE, 1,              CURRENT_DATE           ),
+                        (2,                5,        CURRENT_DATE,  1,          CURRENT_DATE, 1,              CURRENT_DATE           ),
+                        (1,                1,        CURRENT_DATE,  1,          CURRENT_DATE, 1,              CURRENT_DATE           ),
+                        (2,                1,        CURRENT_DATE,  1,          CURRENT_DATE, 1,              CURRENT_DATE           );
 
 CREATE TABLE character_races (
     character_races_id         SERIAL     CONSTRAINT character_races_pk PRIMARY KEY  NOT NULL,
@@ -80,10 +86,13 @@ CREATE TABLE character_races (
 
 INSERT INTO character_races (module_id, name, description, strength_cost_adjust, dexterity_cost_adjust, constitution_cost_adjust, speed_cost_adjust, wit_cost_adjust, intelligence_cost_adjust, wisdom_cost_adjust, charisma_cost_adjust, created_by, created_date, last_updated_by, last_updated_date)
 VALUES  (1, 'Human','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
-        (1, 'Dwarf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
-        (1, 'Orc','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
-        (1, 'Dragonborn','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
-        (1, 'Elf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE);
+        (2, 'Dwarf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (3, 'Orc','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (4, 'Dragonborn','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (5, 'Elf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (6, 'Minotaur','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (7, 'Dark Elf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE),
+        (8, 'High Elf','This is a description test', 10, 10, 10, 10, 10, 10, 10, 10, 1, CURRENT_DATE, 1, CURRENT_DATE);
 
 CREATE TABLE character_spells (
     character_spells_id    SERIAL      CONSTRAINT character_spells_pk PRIMARY KEY  NOT NULL,
@@ -181,3 +190,7 @@ CREATE TABLE party_members (
 UPDATE user_accounts
 SET first_name = 'Jhon'
 WHERE user_account_id = 2;
+
+/* Select Races Included in Owned Modules */
+SELECT c.character_races_id FROM character_races c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = 2;
+

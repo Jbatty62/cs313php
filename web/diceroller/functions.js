@@ -122,7 +122,6 @@ function Dice(numSides, minimum) {
         
         this.value = value;
         var imageName = this.numSides + "sided" + value;
-        console.log(imageName);
         document.getElementById(this.id).innerHTML = '<img src="' + imageName + '.jpg" width=50 height=50> <h2>';
         
         
@@ -183,7 +182,6 @@ function DiceSet(dice, name) {
     
     this.addDice = function (numSides, minimum) {
         
-        console.log("in Dice Set : Add Dice")
         var newDice = new Dice(numSides, minimum);
         newDice.createDOM();
         this.dice.push(newDice);
@@ -225,7 +223,6 @@ function DiceSet(dice, name) {
         diceContainer.setAttribute("class", "diceContainer");
 
         for (let i = 0; i < dice.length; i++) {
-            console.log ("DiceSet Create Dom -- Add Dice HTML -- i= " + i);
             dice[i].createDOM();
             diceContainer.appendChild(dice[i].dom);
         }
@@ -287,7 +284,7 @@ function Board (diceSets) {
 
         document.getElementById("main").innerHTML = " ";
             for (let i = 0; i < diceSets.length; i++) {
-                console.log("in Board.display()");
+                
                 diceSets[i].createDOM();
                 document.getElementById("main").appendChild(diceSets[i].dom);
             
@@ -315,7 +312,6 @@ function Board (diceSets) {
     this.removeDice = function (diceSetID) {
         for (let i = 0; i < diceSets.length; i++) {
             if (diceSets[i].id === diceSetID) {
-                console.log("in board.removedice")
                 board.diceSets[i].removeDice();
             }
         } 
@@ -323,7 +319,6 @@ function Board (diceSets) {
     this.addDice = function (diceSetID) {
         for (let i = 0; i < diceSets.length; i++) {
             if (diceSets[i].id === diceSetID) {
-                console.log("in board.add dice")
                 board.diceSets[i].addDice(3,0);
             }
         } 
@@ -332,14 +327,12 @@ function Board (diceSets) {
     this.rollAll = function (diceSetID) {
         for (let i = 0; i < diceSets.length; i++) {
             if (diceSets[i].id === diceSetID) {
-                console.log("in board.add dice")
                 board.diceSets[i].rollAll();
             }
         } 
     };
 
     this.removeDiceSet = function (diceSetID) {
-        console.log("in board remove dice set");
         
         for (let i = 0; i < diceSets.length; i++) {
             if (diceSets[i].id === diceSetID) {

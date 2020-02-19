@@ -16,7 +16,7 @@ include 'connect.php';
         <main id="main">
 
             <?php
-                foreach ($db->query('SELECT * FROM character_races') as $row) {               
+                foreach ($db->query('SELECT * FROM character_races c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = 2;') as $row) {               
                     echo '<div class="accordion">'. '<h2 class="name">'.$row['name'] .'</h2> <p class="description"> '. $row['description'] .'</p>' .
                     '<div class="stats-table">' . "<table>
                     <tr>
