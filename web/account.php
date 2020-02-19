@@ -214,7 +214,29 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
 
                     </fieldset>
                 </form>
+                <div id="modules-owned">
+                    <table>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Module Name</th>
+                            <th>Date of Purchase</th>
+                            <th>Cost</th>
+                        </tr>
+                        <?php
+                            $sql = 'SELECT * FROM user_orders WHERE user_account_id =' . $_SESSION["ID"];
+                            foreach ($db->query($sql) as $row)
 
+                            echo '<tr>' .
+                                    '<td>' . $row[order_id] . '</td>' .
+                                    '<td>' . $row[module_id] . '</td>' .
+                                    '<td>' . $row[time] . '</td>' .
+                                    '<td>'.$row[module_id] . '</td>' .
+                                 '</tr>';
+
+                        ?>
+                    </table>
+
+                </div>
                 
             </main>
             
