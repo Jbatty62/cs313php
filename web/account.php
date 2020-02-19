@@ -100,7 +100,22 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script type="text/jscript" src="functions.js"></script>
         <style> 
+            table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: var(--color-3);
+  color: white;
+}
         </style>
     </head>
     <body>
