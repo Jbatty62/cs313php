@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php';
 ?>
 
@@ -16,7 +17,10 @@ include 'connect.php';
         <main id="main">
 
             <?php
-                foreach ($db->query('SELECT * FROM character_races c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = 2;') as $row) {               
+            if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                $sql = $db->prepare('SELECT * FROM character_races c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = :id;');
+                $sql->bindParam(':id', $_SESSION["id"]);
+                foreach ($db->query($sql) as $row) {               
                     echo '<div class="accordion">'. '<h2 class="name">'.$row['name'] .'</h2> <p class="description"> '. $row['description'] .'</p>' .
                     '<div class="stats-table">' . "<table>
                     <tr>
@@ -43,6 +47,10 @@ include 'connect.php';
                     
                     '</div></div>';
                 }
+            }
+            else {
+                echo '<h1>You must <a href="login.php">log in</a> to browse rules and content.</h1>';
+            }
             ?>
         </main>
 
