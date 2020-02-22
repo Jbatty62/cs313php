@@ -24,9 +24,14 @@
             <main id="main">
                 
                     <?php
-                   
-
-                            foreach ($db->query('SELECT * FROM modules') as $row) {
+                        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+                            $sql = $db->prepare('SELECT * FROM modules m LEFT JOIN (SELECT * FROM user_orders WHERE user_account_id = :id) orders ON m.module_id = orders.module_id WHERE orders.module_id IS NULL;');
+                            $sql->bindParams(':id', $_SESSION['id']);
+                        }
+                        else {
+                            $sql = $db->prepare('SELECT * FROM modules');
+                        }   
+                        foreach ($db->query($sql) as $row) {
                                
                                 
                                 if(!isset($_SESSION['cart'][$row['module_id']])) {
