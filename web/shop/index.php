@@ -31,7 +31,7 @@
                         else {
                             $sql = $db->prepare('SELECT * FROM modules');
                         }   
-                        foreach ($db->query($sql) as $row) {
+                        foreach ($sql->execute() as $row) {
                                
                                 
                                 if(!isset($_SESSION['cart'][$row['module_id']])) {
