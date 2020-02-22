@@ -27,11 +27,12 @@
                         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                             $sql = $db->prepare('SELECT * FROM modules m LEFT JOIN (SELECT * FROM user_orders WHERE user_account_id = :id) orders ON m.module_id = orders.module_id WHERE orders.module_id IS NULL;');
                             $sql->bindParams(':id', $_SESSION['id']);
+                            $sql->execute()
                         }
                         else {
-                            $sql = $db->prepare('SELECT * FROM modules');
+                            $sql = $db->query('SELECT * FROM modules');
                         }   
-                        foreach ($sql->execute() as $row) {
+                        foreach ($sql as $row) {
                                
                                 
                                 if(!isset($_SESSION['cart'][$row['module_id']])) {
