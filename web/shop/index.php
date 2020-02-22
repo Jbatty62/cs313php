@@ -25,7 +25,7 @@
                 
                     <?php
                         if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-                            $sql = $db->prepare('SELECT * FROM modules m LEFT JOIN (SELECT * FROM user_orders WHERE user_account_id = :id) orders ON m.module_id = orders.module_id WHERE orders.module_id IS NULL;');
+                            $sql = $db->prepare('SELECT m.module_id, m.module_name, m.short_description, m.price FROM modules m LEFT JOIN (SELECT * FROM user_orders WHERE user_account_id = :id) orders ON m.module_id = orders.module_id WHERE orders.module_id IS NULL;');
                             $sql->bindParam(':id', $_SESSION['id']);
                             $sql->execute();
                             $results = $sql->fetchAll();
