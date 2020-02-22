@@ -20,7 +20,9 @@ include 'connect.php';
             if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 $sql = $db->prepare('SELECT * FROM character_races c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = :id;');
                 $sql->bindParam(':id', $_SESSION["id"]);
-                foreach ($db->query($sql) as $row) {               
+                $sql->execute();
+                $results = $sql->fetchAll();
+                foreach ($results as $row) {               
                     echo '<div class="accordion">'. '<h2 class="name">'.$row['name'] .'</h2> <p class="description"> '. $row['description'] .'</p>' .
                     '<div class="stats-table">' . "<table>
                     <tr>
