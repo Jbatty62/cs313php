@@ -1,7 +1,6 @@
 <?php
-
 session_start();
-
+require_once '../connect.php';
 
 $total = 0;
 
@@ -17,7 +16,7 @@ $total = 0;
         <?php 
                //include '../nav.php'
         ?>
-        <div id=container>
+        <div id="container">
             <main id="main">
                 <div style="margin: auto">
                 <?php
@@ -25,10 +24,18 @@ $total = 0;
                     echo '<p>Address: ' . $_GET['street'] . ',' . $_GET['city'] . ', ' . $_GET['state'] . ' ' . $_GET['zip'] . '</p>';
                     echo '<p>Country: ' . $_GET['country'] . '</p>';
                     echo '<ul style="padding:0;">Items Purchased: ';
+
+                   
                     
                     foreach ($_SESSION['cart'] as $item) {
                         echo '<li style="list-style:none;padding-left:40px;"> ID: ' . $item['id'] . ' Name: ' . $item['name'] . ' Price: $' . $item['price'] . '</li>';
                         $total += $item['price'];
+
+                        $sql = $db->prepare('INSERT INTO user_orders (user_account_id, module_id, time, created_by, created_date, last_updated_by, last_updated_date) VALUES (:userid, :itemid, CURRENT_DATE,  1, CURRENT_DATE, 1, CURRENT_DATE);');
+                        $sql->bindParam(':userid', $_SESSION["id"]);
+                        $sql->bindParam(':itemid', $item['id']);
+                        $sql->execute();
+
                     }
                     echo '</ul>';
                     echo '<p>Total: $' . number_format($total, 2) . '</p>';

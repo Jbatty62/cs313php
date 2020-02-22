@@ -248,3 +248,14 @@ WHERE user_account_id = 2;
 /* Select Races Included in Owned Modules */
 SELECT c.character_races_id FROM character_races c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = 2;
 
+SELECT * FROM user_orders;
+SELECT * FROM modules;
+SELECT * FROM modules m LEFT JOIN user_orders orders ON m.module_id = orders.module_id WHERE orders.module_id = NULL;
+SELECT * FROM modules m LEFT JOIN user_orders orders ON m.module_id = orders.module_id;
+
+SELECT
+*
+FROM
+    modules m
+LEFT JOIN user_orders orders ON m.module_id = orders.module_id
+WHERE orders.module_id IS NULL;
