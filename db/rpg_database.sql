@@ -253,9 +253,10 @@ SELECT * FROM modules;
 SELECT * FROM modules m LEFT JOIN user_orders orders ON m.module_id = orders.module_id WHERE orders.module_id = NULL;
 SELECT * FROM modules m LEFT JOIN user_orders orders ON m.module_id = orders.module_id;
 
+/* Select Modules that the User hasn't purchased yet */
 SELECT
 *
 FROM
     modules m
-LEFT JOIN user_orders orders ON m.module_id = orders.module_id
+LEFT JOIN (SELECT * FROM user_orders WHERE user_account_id = 3) orders ON m.module_id = orders.module_id
 WHERE orders.module_id IS NULL;
