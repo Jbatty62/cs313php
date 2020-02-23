@@ -1,9 +1,16 @@
 <?php
 
 session_start();
-require_once "../connect.php";
+
 
 $total = 0;
+
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === false){
+    header("location: ../login.php");
+    exit;
+}
+
+require_once "../connect.php";
 
 ?>
 <html>
