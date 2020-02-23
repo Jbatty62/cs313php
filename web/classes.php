@@ -25,7 +25,7 @@ include 'connect.php';
                 }
             */
                 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                    $sql = $db->prepare('SELECT * FROM character_abilities c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = :id;');
+                    $sql = $db->prepare('SELECT * FROM character_classes c INNER JOIN user_orders orders ON c.module_id = orders.module_id WHERE orders.user_account_id = :id;');
                     $sql->bindParam(':id', $_SESSION["id"]);
                     $sql->execute();
                     $results = $sql->fetchAll();
