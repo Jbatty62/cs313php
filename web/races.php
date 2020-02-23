@@ -23,31 +23,35 @@ include 'connect.php';
                 $sql->execute();
                 $results = $sql->fetchAll();
                 foreach ($results as $row) {               
-                    echo '<div class="accordion">'. '<h2 class="name">'.$row['name'] .'</h2> <p class="description"> '. $row['description'] .'</p>' .
-                    '<h2>Stat Experience Cost Adjustments</h2><div class="stats-table">' . "<table>
-                    <tr>
-                      <th>Strength</th>
-                      <th>Dexterity</th>
-                      <th>Constitution</th>
-                      <th>Speed</th>
-                      <th>Wit</th>
-                      <th>Intelligence</th>
-                      <th>Wisdom</th>
-                      <th>Charisma</th>
-                    </tr>
-                    <tr>
-                    <td>" . $row['strength_cost_adjust'] ."</td>
-                    <td>" . $row['dexterity_cost_adjust'] ."</td>
-                    <td>" . $row['constitution_cost_adjust'] ."</td>
-                    <td>" . $row['speed_cost_adjust'] ."</td>
-                    <td>" . $row['wit_cost_adjust'] ."</td>
-                    <td>" . $row['intelligence_cost_adjust'] ."</td>
-                    <td>" . $row['wisdom_cost_adjust'] ."</td>
-                    <td>" . $row['charisma_cost_adjust'] ."</td>
-                    </tr>
-                  </table>" .
-                    
-                    '</div></div>';
+                    echo '<div class="accordion">
+                            <h2 class="name">'.$row['name'] .'</h2>
+                            <p class="description"> '. $row['description'] .'</p>
+                            <h2>Stat Experience Cost Adjustments</h2>
+                            <div class="stats-table">
+                                <table>
+                                    <tr>
+                                        <th>Strength</th>
+                                        <th>Dexterity</th>
+                                        <th>Constitution</th>
+                                        <th>Speed</th>
+                                        <th>Wit</th>
+                                        <th>Intelligence</th>
+                                        <th>Wisdom</th>
+                                        <th>Charisma</th>
+                                    </tr>
+                                    <tr>
+                                        <td>" . $row['strength_cost_adjust'] ."</td>
+                                        <td>" . $row['dexterity_cost_adjust'] ."</td>
+                                        <td>" . $row['constitution_cost_adjust'] ."</td>
+                                        <td>" . $row['speed_cost_adjust'] ."</td>
+                                        <td>" . $row['wit_cost_adjust'] ."</td>
+                                        <td>" . $row['intelligence_cost_adjust'] ."</td>
+                                        <td>" . $row['wisdom_cost_adjust'] ."</td>
+                                        <td>" . $row['charisma_cost_adjust'] ."</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>';
                 }
 
                 echo '<h1>Want to see more Races? Purchase more Modules from <a href="/shop">The Shop</a></h1>';
