@@ -40,7 +40,7 @@ include 'connect.php';
                                         <th>Charisma</th>
                                     </tr>
                                     <tr>
-                                        <td>" . $row['strength_cost_adjust'] ."</td>
+                                        <td>' . $row['strength_cost_adjust'] ."</td>
                                         <td>" . $row['dexterity_cost_adjust'] ."</td>
                                         <td>" . $row['constitution_cost_adjust'] ."</td>
                                         <td>" . $row['speed_cost_adjust'] ."</td>
