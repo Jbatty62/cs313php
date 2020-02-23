@@ -34,6 +34,7 @@ body {
     flex-grow: 1;
     margin: 15px;
     background-color: var(--color-2);
+    padding: 15px;
 
 }
 
@@ -47,6 +48,10 @@ body {
 
 .stats-table td {
     text-align: center;
+}
+
+.stats-table th {
+  text-align: center;
 }
 
 .stats-table {

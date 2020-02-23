@@ -24,16 +24,16 @@ include 'connect.php';
                 $results = $sql->fetchAll();
                 foreach ($results as $row) {               
                     echo '<div class="accordion">'. '<h2 class="name">'.$row['name'] .'</h2> <p class="description"> '. $row['description'] .'</p>' .
-                    '<div class="stats-table">' . "<table>
+                    '<div class="stats-table"><h2>Stat Experience Cost Adjustments</h2>' . "<table>
                     <tr>
-                      <th>Strength<br>Cost<br>Adjust</th>
-                      <th>Dexterity<br>Cost<br>Adjust<br></th>
-                      <th>Constitution<br>Cost<br>Adjust<br></th>
-                      <th>Speed<br>Cost<br>Adjust<br></th>
-                      <th>Wit<br>Cost<br>Adjust<br></th>
-                      <th>Intelligence<br>Cost<br>Adjust<br></th>
-                      <th>Wisdom<br>Cost<br>Adjust<br></th>
-                      <th>Charisma<br>Cost<br>Adjust</th>
+                      <th>Strength</th>
+                      <th>Dexterity</th>
+                      <th>Constitution</th>
+                      <th>Speed></th>
+                      <th>Wit</th>
+                      <th>Intelligence</th>
+                      <th>Wisdom</th>
+                      <th>Charisma</th>
                     </tr>
                     <tr>
                     <td>" . $row['strength_cost_adjust'] ."</td>
