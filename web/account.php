@@ -216,7 +216,7 @@ if(!isset($_SESSION["loggedin"]) || !($_SESSION["loggedin"] === true)){
                 </form>
                 <div id="modules-owned">
                     <h2>Modules Owned</h2>
-                    <table>
+                    <table style="margin-bottom:75px;">
                         <tr>
                             <th>Order ID</th>
                             <th>Module Name</th>
