@@ -13,6 +13,7 @@
         </div>
     </li>
     <li><a href="/account.php">Account</a></li>
+    <li><a href="/diceroller">Dice Roller</a></li>
     </ul>
     <?php 
 
