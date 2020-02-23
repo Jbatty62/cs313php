@@ -50,7 +50,7 @@ include 'connect.php';
                     '</div></div>';
                 }
 
-                echo '<h1>Want to see more Races? Purchase more Modules from <a href="/shop">The Shop</a></h1>'
+                echo '<h1>Want to see more Races? Purchase more Modules from <a href="/shop">The Shop</a></h1>';
             }
             else {
                 echo '<h1>You must <a href="login.php">log in</a> to browse rules and content.</h1>';
