@@ -40,14 +40,14 @@ include 'connect.php';
                                         <th>Charisma</th>
                                     </tr>
                                     <tr>
-                                        <td>' . $row['strength_cost_adjust'] ."</td>
-                                        <td>" . $row['dexterity_cost_adjust'] ."</td>
-                                        <td>" . $row['constitution_cost_adjust'] ."</td>
-                                        <td>" . $row['speed_cost_adjust'] ."</td>
-                                        <td>" . $row['wit_cost_adjust'] ."</td>
-                                        <td>" . $row['intelligence_cost_adjust'] ."</td>
-                                        <td>" . $row['wisdom_cost_adjust'] ."</td>
-                                        <td>" . $row['charisma_cost_adjust'] ."</td>
+                                        <td>' . $row['strength_cost_adjust'] .'</td>
+                                        <td>' . $row['dexterity_cost_adjust'] .'</td>
+                                        <td>' . $row['constitution_cost_adjust'] .'</td>
+                                        <td>' . $row['speed_cost_adjust'] .'</td>
+                                        <td>' . $row['wit_cost_adjust'] .'</td>
+                                        <td>' . $row['intelligence_cost_adjust'] .'</td>
+                                        <td>' . $row['wisdom_cost_adjust'] .'</td>
+                                        <td>' . $row['charisma_cost_adjust'] .'</td>
                                     </tr>
                                 </table>
                             </div>
