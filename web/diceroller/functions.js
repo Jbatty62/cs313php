@@ -251,6 +251,7 @@ function Dice(numSides, minimum) {
         dom.innerHTML = this.generateInnerHTML();
         dom.addEventListener("touchend", function() {
             self.roll();
+            board.findDiceSetbyDiceID().updateTotal();
         }, false)
 
         this.dom = dom;
@@ -288,6 +289,13 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
     this.id = new Date().valueOf() + Math.random();
     this.modifier = modifier;
     this.total = 0;
+    this.updateTotal = function() {
+        var total = this.modifier;
+        for (var i = 0; i < dice.length; i++){
+           total += this.dice[i].value;
+        }
+        document.getElementById(this.id).getElementsByClassName("total")[0].innerHTML = total;
+    };
     this.updateTitle = function() {
         console.log(this.id);
         this.title = encodeURIComponent(document.getElementById(this.id).getElementsByClassName("diceSetTitle")[0].innerHTML);
@@ -520,6 +528,15 @@ function Board (diceSets) {
             if (diceSets[i].id === diceSetID) {
                 return diceSets[i];
             }
+        } 
+    };
+
+    this.findDiceSetbyID = function (diceID) {
+        for (let i = 0; i < diceSets.length; i++) {
+            for (let j = 0; j< diceSets[i].dice.length; j++)
+                if (diceSets[i].dice[j] === diceID) {
+                    return diceSets[i];
+                }
         } 
     };
 
