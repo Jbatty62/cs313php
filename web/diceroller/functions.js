@@ -36,11 +36,11 @@ function addDice(diceSetID) {
 
    menu.appendChild(d3);
 
-   let d4 = document.createElement("div");
-   d4.setAttribute("class","d4");
-   d4.classList.add("dice");
-   d4.innerHTML = "d4";
-   d4.addEventListener("mousedown", function() {
+    let d4 = document.createElement("div");
+    d4.setAttribute("class","d4");
+    d4.classList.add("dice");
+    d4.innerHTML = "d4";
+    d4.addEventListener("mousedown", function() {
     board.findDiceSetbyID(diceSetID).addDice(4,0)
 },false);
 
@@ -531,7 +531,7 @@ function Board (diceSets) {
         } 
     };
 
-    this.findDiceSetbyID = function (diceID) {
+    this.findDiceSetbyDiceID = function (diceID) {
         for (let i = 0; i < diceSets.length; i++) {
             for (let j = 0; j< diceSets[i].dice.length; j++)
                 if (diceSets[i].dice[j] === diceID) {
