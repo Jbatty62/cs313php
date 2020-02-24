@@ -57,6 +57,7 @@ function addDice(diceSetID) {
         touchstart(e,3);
 
     },false);
+        d3.addEventListener("touchend", touchend(numSides),false);
        
     }
     else {
@@ -626,7 +627,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
     
     board.display();
-    window.addEventListener("ontouchend", touchend(), false);
 
  }, false);
 
@@ -649,7 +649,7 @@ function touchstart(e, numSides) {
 	lockTimer = true;
 }
 
-function touchend() {
+function touchend(numSides) {
     //stops short touches from firing the event
     if (timer){
         clearTimeout(timer); // clearTimeout, not cleartimeout..
