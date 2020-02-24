@@ -18,7 +18,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 90%;
+    height: 100%;
+    min-height: 100vh;
     width: 90%;
 }
 
@@ -36,6 +37,11 @@
     width: 50px;
     height: 50px;
     margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-sizing: border-box;
 }
 
 .close {
@@ -79,6 +85,39 @@
     
 }
 
+.total, .modifier {
+display: block;
+margin: auto;
+text-align: center;
+font-size: 24px;
+background-color: var(--color-5);
+padding: 3px;
+}
+
+.totalArea .adjusts {
+    height:20px;
+    background:#f2f2f2;
+    border-radius:4px;
+    border:1px solid #ddd;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.totalArea p {
+    margin: 0;
+}
+
+.totalArea label {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: white;
+}
+
 .inputs span {
     height:20px;
     background:#f2f2f2;
@@ -94,4 +133,63 @@
 .inputs {
     display: flex;
     flex-direction: column;
+}
+
+.diceSetTitle {
+    position: absolute;
+    top: 0;
+    margin-top: 12px;
+    left: 75px;
+    color: white;
+}
+.addDiceMenu{
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    background-color: rgba(62,62,62,6);
+    opacity: .7;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 40px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.addDiceMenu div{
+height: 75px;
+    width: 75px;
+    position: static;
+    background-color: aliceblue;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.d4, .d8, .d20 {
+    -webkit-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    padding-top: 20px;
+
+}
+
+.d10 {
+    -webkit-clip-path: polygon(50% 0, 100% 15%, 50% 100%, 0 15%);
+    clip-path: polygon(50% 0, 100% 15%, 50% 100%, 0 15%);
+    padding-bottom: 10px;
+    
+
+}
+
+.d12 {
+    -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+
+}
+
+.d100 {
+    -webkit-clip-path: polygon(0 50%, 15% 0, 100% 50%, 15% 100%);
+    clip-path: polygon(0 50%, 15% 0, 100% 50%, 15% 100%);
+    padding-right: 15px;
+  
 }

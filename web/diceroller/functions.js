@@ -2,7 +2,7 @@
 //Setup the initial varriables for the DiceRoller App
 {
 let dice = [new Dice(3, 0), new Dice(3, 0),new Dice(3,0)],
-        diceSet = new DiceSet(dice, "Dice Set 1"),
+        diceSet = new DiceSet(),
         diceSets = [diceSet];
 
         var board = new Board(diceSets);
@@ -23,8 +23,103 @@ function removeDice(DiceSetId) {
  * Add a Dice to a DiceSet.
  *****************************************/
 function addDice(diceSetID) {
-   board.addDice(diceSetID);
+   let menu = document.createElement("div");
+   menu.setAttribute("class","addDiceMenu");
+
+   let d3 = document.createElement("div");
+   d3.setAttribute("class","d3");
+   d3.classList.add("dice");
+   d3.innerHTML = "d3";
+   d3.addEventListener("mousedown", function() {
+       board.findDiceSetbyID(diceSetID).addDice(3,0)
+   },false);
+
+   menu.appendChild(d3);
+
+   let d4 = document.createElement("div");
+   d4.setAttribute("class","d4");
+   d4.classList.add("dice");
+   d4.innerHTML = "d4";
+   d4.addEventListener("mousedown", function() {
+    board.findDiceSetbyID(diceSetID).addDice(4,0)
+},false);
+
+   menu.appendChild(d4);
+
+   let d6 = document.createElement("div");
+   d6.setAttribute("class","d6");
+   d6.classList.add("dice");
+   d6.innerHTML = "d6";
+   d6.addEventListener("mousedown", function() {
+    board.findDiceSetbyID(diceSetID).addDice(6,0)
+},false);
+
+   menu.appendChild(d6);
+
+   let d8 = document.createElement("div");
+   d8.setAttribute("class","d8");
+   d8.classList.add("dice");
+   d8.innerHTML = "d8";
+   d8.addEventListener("mousedown", function() {
+    board.findDiceSetbyID(diceSetID).addDice(8,0)
+},false);
+
+   menu.appendChild(d8);
+
+   let d10 = document.createElement("div");
+   d10.setAttribute("class","d10");
+   d10.classList.add("dice");
+   d10.innerHTML = "d10";
+   d10.addEventListener("mousedown", function() {
+    board.findDiceSetbyID(diceSetID).addDice(10,0)
+},false);
+
+   menu.appendChild(d10);
+
+   let d12 = document.createElement("div");
+   d12.setAttribute("class","d12");
+   d12.classList.add("dice");
+   d12.innerHTML = "d12";
+   d12.addEventListener("mousedown", function() {
+    board.findDiceSetbyID(diceSetID).addDice(12,0)
+},false);
+
+   menu.appendChild(d12);
+
+   let d20 = document.createElement("div");
+   d20.setAttribute("class","d20");
+   d20.classList.add("dice");
+   d20.innerHTML = "d20";
+   d20.addEventListener("mousedown", function() {
+    board.findDiceSetbyID(diceSetID).addDice(20,0)
+},false);
+
+   menu.appendChild(d20);
+
+   let d100 = document.createElement("div");
+   d100.setAttribute("class","d100");
+   d100.classList.add("dice");
+   d100.innerHTML = "d100";
+   d100.addEventListener("mousedown", function() {
+    board.findDiceSetbyID(diceSetID).addDice(100,0)
+},false);
+
+   menu.appendChild(d100);
+
+   document.addEventListener("mousedown", function() {
+        document.getElementsByClassName("addDiceMenu")[0].remove();
+   },{once:true});
+   document.getElementById(diceSetID).appendChild(menu);
+   //board.addDice(diceSetID);
+
+   
 }
+
+
+function closeAddMenu(){
+    
+}
+
 
  /*****************************************
  * rollAll()
@@ -48,7 +143,7 @@ function removeDiceSet(diceSetID) {
  *****************************************/
 function addDiceSet() {
     let dice = [new Dice(3, 0), new Dice(3, 0),new Dice(3,0)],
-        diceSet = new DiceSet(dice, "Dice Set 1");
+        diceSet = new DiceSet(dice, "Title");
     board.addDiceSet(diceSet);
 }
 
@@ -69,17 +164,20 @@ function loadBoard () {
 
     //If Local Storage is already Set
     if (window.localStorage.getItem("board")) {
+        console.log(window.localStorage.getItem("board"));
         var object = JSON.parse(window.localStorage.getItem("board")); //Recover stored JSON into object
+        console.log(object);
     
         
         diceSets = []; //Array to store all DiceSets
         for (let i = 0; i< object.length; i++) {
             var dice = []; //Array to hold dice for one DiceSet
-            for(let j = 0; j < object[i].length; j++) {
-                dice.push(new Dice(object[i][j].numSides, object[i][j].minimum));
+            for(let j = 0; j < object[i].dice.length; j++) {
+                dice.push(new Dice(Number(object[i].dice[j].numSides), Number(object[i].dice[j].minimum)));
                 
             }
-            diceSets.push(new DiceSet(dice)); //Add array of dice to a new DiceSet and push to array of DiceSets
+            let title = decodeURIComponent(object[i].title)
+            diceSets.push(new DiceSet(dice,title)); //Add array of dice to a new DiceSet and push to array of DiceSets
         }
         //Create new board and replace the old one
         board = new Board(diceSets);
@@ -118,11 +216,20 @@ function Dice(numSides, minimum) {
     this.numSides = numSides;
     this.id = new Date().valueOf()+Math.random();
     this.value = 0;
+    this.generateInnerHTML = function() {
+        if (this.numSides === 3) {
+            var imageName = this.numSides + "sided" + this.value;
+             return '<img src="' + imageName + '.jpg" width=50 height=50> <h2>';
+            }
+            else {
+               return this.value;
+            }
+    };
     this.setValue = function (value) {
         
         this.value = value;
-        var imageName = this.numSides + "sided" + value;
-        document.getElementById(this.id).innerHTML = '<img src="' + imageName + '.jpg" width=50 height=50> <h2>';
+
+        document.getElementById(this.id).innerHTML = this.generateInnerHTML();
         
         
     };
@@ -134,11 +241,17 @@ function Dice(numSides, minimum) {
         this.setValue(roll);
         return roll;
     };
+    
     this.createDOM = function() {
+        var self = this;
         var dom = document.createElement("div");
         dom.setAttribute("id",this.id);
         dom.setAttribute("class","dice");
-        dom.innerHTML = '<img src="3sided0.jpg" width=50 height=50>';
+        dom.classList.add("d" + numSides);
+        dom.innerHTML = this.generateInnerHTML();
+        dom.addEventListener("touchend", function() {
+            self.roll();
+        }, false)
 
         this.dom = dom;
 
@@ -169,15 +282,39 @@ function Dice(numSides, minimum) {
 *       createDOM(): Generate the HTML to be inserted into the DOM.
 *       toJSON():   Generates json that can easily be used to reload the board or element.
 **************************************************************************/
-function DiceSet(dice, name) {
-    this.name = name;
+function DiceSet(dice = [], title = "Title", modifier = 0) {
+    this.title = title;
     this.dice = dice;
     this.id = new Date().valueOf() + Math.random();
+    this.modifier = modifier;
+    this.total = 0;
+    this.updateTitle = function() {
+        console.log(this.id);
+        this.title = encodeURIComponent(document.getElementById(this.id).getElementsByClassName("diceSetTitle")[0].innerHTML);
+    };
+    this.updateModifier = function(inputValue = 0) {
+        if(inputValue === 0){
+            inputValue = document.getElementById(this.id).getElementsByClassName("modifier")[0].innerHTML;
+            if (isNaN(inputValue)){
+                this.modifier = 0;
+                document.getElementById(this.id).getElementsByClassName("modifier")[0].innerHTML = 0;
+            }
+            else {
+                this.modifier =inputValue;
+            }
+        }
+        else {
+            this.modifier += inputValue;
+            document.getElementById(this.id).getElementsByClassName("modifier")[0].innerHTML = this.modifier;
+        }
+    }
     this.rollAll = function () {
         
+        var total = this.modifier;
         for (var i = 0; i < dice.length; i++){
-            this.dice[i].roll();
+           total += this.dice[i].roll();
         }
+        document.getElementById(this.id).getElementsByClassName("total")[0].innerHTML = total;
     };
     
     this.addDice = function (numSides, minimum) {
@@ -196,6 +333,9 @@ function DiceSet(dice, name) {
      
     };
     this.createDOM = function () {
+
+        var self = this;  //To keep context of "this" for Event Listeners
+
         var dom = document.createElement("div");
         dom.setAttribute("id",this.id);
         dom.setAttribute("class","diceset");
@@ -231,11 +371,62 @@ function DiceSet(dice, name) {
         xButton.setAttribute("class", "close");
         xButton.setAttribute("onclick", "removeDiceSet(" + this.id + ")");
 
+        var title = document.createElement("h2");
+        title.setAttribute("class","diceSetTitle");
+        title.setAttribute("contenteditable","true");
+        title.addEventListener("blur", function() {
+            self.updateTitle();
+        },false);
+        title.innerHTML = this.title;
+
+        let totalArea = document.createElement("div");
+        totalArea.classList.add("totalArea")
+        totalArea.innerHTML='<label>Total</label><span class="total">'+ this.total +'</span><label>Modifier</label>'
+    
+        var span = document.createElement("h2");
+        span.setAttribute("class","modifier");
+        span.setAttribute("contenteditable","true");
+        span.addEventListener("blur", function() {
+            self.updateModifier();
+        },false);
+        span.innerHTML = this.modifier;
+
+        totalArea.appendChild(span);
+
+        var modPlus =document.createElement("span");
+        modPlus.setAttribute("class","adjusts");
+        modPlus.innerHTML = "+";
+        modPlus.addEventListener("click", function() {
+            console.log("Message");
+            self.updateModifier(1);
+        },false);
+
+        var modMinus =document.createElement("span");
+        modMinus.setAttribute("class","adjusts");
+        modMinus.innerHTML = "-";
+        modMinus.addEventListener("click", function() {
+            console.log("Message");
+            self.updateModifier(-1);
+        },false);
+
+       
+        totalArea.appendChild(modMinus);
+        totalArea.appendChild(modPlus);
+        
+        
+
+        //totalArea.innerHTML +='';
+
+     
+       
+
         inputs.appendChild(minusButton);
         inputs.appendChild(plusButton);
         inputs.appendChild(rollAllButton);
+        dom.appendChild(title);
         dom.appendChild(inputs);
         dom.appendChild(diceContainer);
+        dom.appendChild(totalArea);
         dom.appendChild(xButton);
 
         
@@ -244,7 +435,8 @@ function DiceSet(dice, name) {
     };
     this.dom = null;
     this.toJSON = function() {
-        var json = '[';
+        var json = '{';
+        json += '"title": "' + this.title + '","dice": [';
         for (let i = 0; i < dice.length; i++) {
             json += dice[i].toJSON();
             if (i != dice.length - 1) {
@@ -252,7 +444,7 @@ function DiceSet(dice, name) {
             }
         }
 
-        json += "]";
+        json += "]}";
         return json;
     }
 
@@ -320,6 +512,13 @@ function Board (diceSets) {
         for (let i = 0; i < diceSets.length; i++) {
             if (diceSets[i].id === diceSetID) {
                 board.diceSets[i].addDice(3,0);
+            }
+        } 
+    };
+    this.findDiceSetbyID = function (diceSetID) {
+        for (let i = 0; i < diceSets.length; i++) {
+            if (diceSets[i].id === diceSetID) {
+                return diceSets[i];
             }
         } 
     };
