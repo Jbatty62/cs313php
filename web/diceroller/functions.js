@@ -53,11 +53,13 @@ function addDice(diceSetID) {
    d3.innerHTML = "d3";
    if (isMobile) {
         d3.addEventListener("touchstart", function(e) {
+            
 
-        touchstart(e,3);
+        touchstart(e,3,diceSetID);
+        d3.addEventListener("touchend", touchend(3,diceSetID),false);
 
     },false);
-        d3.addEventListener("touchend", touchend(numSides),false);
+        
        
     }
     else {
@@ -640,20 +642,25 @@ var onlongtouch;
 var timer, lockTimer;
 var touchduration = 800; //length of time we want the user to touch before we do something
 
-function touchstart(e, numSides) {
+function touchstart(e, numSides, diceSetID) {
+    console.log("'touch start")
 	e.preventDefault();
 	if(lockTimer){
 		return;
 	}
-    timer = setTimeout(board.findDiceSetbyID(diceSetID).addDice(numSides,1), touchduration); 
+    timer = setTimeout(function() {
+        board.findDiceSetbyID(diceSetID).addDice(numSides,1)
+        lockTimer = false;
+    }, touchduration); 
 	lockTimer = true;
 }
 
-function touchend(numSides) {
+function touchend(numSides, diceSetID) {
+    console.log("touch end")
     //stops short touches from firing the event
-    if (timer){
+    if (lockTimer){
         clearTimeout(timer); // clearTimeout, not cleartimeout..
         lockTimer = false;
-        board.findDiceSetbyID(diceSetID).addDice(numSides,1), touchduration
+        board.findDiceSetbyID(diceSetID).addDice(numSides,0), touchduration
 	}
 }
