@@ -52,13 +52,16 @@ function addDice(diceSetID) {
    d3.classList.add("dice");
    d3.innerHTML = "d3";
    if (isMobile) {
-        d3.addEventListener("touchstart", function(e) {
+       
+        d3.addEventListener("long-press", function(e) {
             
-
-        touchstart(e,3,diceSetID);
-        d3.addEventListener("touchend", touchend(3,diceSetID),false);
+            board.findDiceSetbyID(diceSetID).addDice(3,1);
+            document.getElementsByClassName("addDiceMenu")[0].remove();
 
     },false);
+        d3.addEventListener("touchend", function(e){
+            board.findDiceSetbyID(diceSetID).addDice(3,0)
+        }, false)
         
        
     }
@@ -66,7 +69,7 @@ function addDice(diceSetID) {
        
         d3.addEventListener("mousedown", function(e) {
             (e.shiftKey) ? min = 1 : min = 0;
-            board.findDiceSetbyID(diceSetID).addDice(3,min)
+            board.findDiceSetbyID(diceSetID).addDice(3,min);
     },false);
     }
 
