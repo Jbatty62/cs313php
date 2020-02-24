@@ -7,20 +7,20 @@
 }
 
 #container {
-    background-color: var(--color-1);
-    display: flex;
     height: 100%;
     width: 100%;
 }
 
 #main {
-    margin: auto;
+    margin: 0;
+    padding:30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100%;
+    box-sizing: border-box;
     min-height: 100vh;
-    width: 90%;
+    width: 100%;
+    background-color: var(--color-1);
 }
 
 .diceSet {
@@ -28,7 +28,9 @@
     background-color: var(--color-2);
     display: flex;
     padding: 25px;
+    min-width: 300px;
     margin: 15px;
+   
    
 }
 
@@ -150,8 +152,7 @@ padding: 3px;
     width: 100%;
     min-height: 100%;
     position: absolute;
-    background-color: rgba(62,62,62,6);
-    opacity: .7;
+    background-color: rgba(62,62,62,0.6);
     top: 0;
     left: 0;
     display: flex;
@@ -159,6 +160,15 @@ padding: 3px;
     padding-top: 40px;
     box-sizing: border-box;
     flex-wrap: wrap;
+}
+
+.helpText {
+    position: absolute;
+    top: 0;
+    margin-top: 12px;
+    left: 15px;
+    color: white;
+    opacity: 1;
 }
 
 .addDiceMenu div{
@@ -196,4 +206,13 @@ height: 75px;
     clip-path: polygon(0 50%, 15% 0, 100% 50%, 15% 100%);
     padding-right: 15px;
   
+}
+
+#settings-toggle {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
 }
