@@ -270,12 +270,16 @@ function importDiceSet(url) {
         if(ajax.readyState == 4 && ajax.status == 200) {
             console.log(ajax.responseText);
             try {
-                var data = JSON.parse(ajax.responseText)
+                var object = JSON.parse(ajax.responseText)
             }
             catch(err) {
                 console.log(err.message + "in" + ajax.responseText)
             }
-            board.addDiceSet(new DiceSet(data["dice"],data["title"],data["modifier"]));
+            let dice = [];
+            for (let i = 0; i < object.dice.length; i++) {
+                dice.push(new Dice(object.dice[i].numSides, object.dice[i].minimum))
+            }
+            board.addDiceSet(new DiceSet(dice,data["title"],data["modifier"]));
         }
     }
     ajax.send();
