@@ -9,6 +9,11 @@ let dice = [new Dice(3, 0), new Dice(3, 0),new Dice(3,0)],
         
 }
 
+function toggleSettings() {
+
+    document.getElementById("settings-menu").classList.toggle("hide");
+}
+
 
  /*****************************************
  * removeDice()
@@ -151,16 +156,40 @@ function addDice(diceSetID) {
 },false);
 
    menu.appendChild(d100);
+   menu.style.opacity = 0;
+   
+    
+
 
    document.addEventListener("mousedown", function() {
         document.getElementsByClassName("addDiceMenu")[0].remove();
    },{once:true});
    document.getElementById(diceSetID).appendChild(menu);
+
+   for (opacity = 0; opacity < 1.1; opacity = opacity + 0.1) 
+   {           
+   setTimeout(function(){menu.style.opacity = opacity;},100);                      
+   } 
 }
-
-
-function closeAddMenu(){
+/*
+if (menu.style.opacity == "1.2" ){
+    for (opacity = 1.2; opacity > 0; opacity = opacity - 0.1) 
+    {           
+    console.log(opacity);
+    setTimeout(function(){document.getElementById('settings-menu').style.opacity = opacity;},100);                      
+    }  
+    console.log(menu.style.opacity);
     
+}
+else {
+
+*/
+
+function showTutorial(){
+    document.getElementById("tutorial").style.width = "100%";
+}
+function hideTutorial() {
+    document.getElementById("tutorial").style.width = 0;
 }
 
 
@@ -219,7 +248,8 @@ function loadBoard () {
                 
             }
             let title = decodeURIComponent(object[i].title)
-            diceSets.push(new DiceSet(dice,title)); //Add array of dice to a new DiceSet and push to array of DiceSets
+            let modifier = object[i].modifier;
+            diceSets.push(new DiceSet(dice,title,modifier)); //Add array of dice to a new DiceSet and push to array of DiceSets
         }
         //Create new board and replace the old one
         board = new Board(diceSets);
@@ -227,7 +257,30 @@ function loadBoard () {
     
     board.display();
 }
+function importDiceSet(url) {
 
+    //Start AJAX
+    var ajax = new XMLHttpRequest();
+    ajax.open('GET', url, true);
+
+    //Send the proper header information along with the request
+    //ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    ajax.onreadystatechange = function() {//Call a function when the state changes.
+        if(ajax.readyState == 4 && ajax.status == 200) {
+            console.log(ajax.responseText);
+            try {
+                var data = JSON.parse(ajax.responseText)
+            }
+            catch(err) {
+                console.log(err.message + "in" + ajax.responseText)
+            }
+            board.addDiceSet(new DiceSet(data["dice"],data["title"],data["modifier"]));
+        }
+    }
+    ajax.send();
+
+}
 
 
 
@@ -291,8 +344,7 @@ function Dice(numSides, minimum) {
         dom.setAttribute("class","dice");
         dom.classList.add("d" + numSides);
         dom.innerHTML = this.generateInnerHTML();
-        //Event is a touch event for demonstration purposes. In next release this feature will also be available on desktop.
-        dom.addEventListener("touchend", function() {
+        dom.addEventListener("click", function() {
             self.roll();
             board.findDiceSetbyDiceID(self.id).updateTotal();
         }, false)
@@ -489,7 +541,7 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
     this.dom = null;
     this.toJSON = function() {
         var json = '{';
-        json += '"title": "' + this.title + '","dice": [';
+        json += '"title": "' + this.title + '","modifier": "'+ this.modifier + '","dice": [';
         for (let i = 0; i < dice.length; i++) {
             json += dice[i].toJSON();
             if (i != dice.length - 1) {
@@ -579,7 +631,7 @@ function Board (diceSets) {
     this.findDiceSetbyDiceID = function (diceID) {
         for (let i = 0; i < diceSets.length; i++) {
             for (let j = 0; j< diceSets[i].dice.length; j++)
-                if (diceSets[i].dice[j] === diceID) {
+                if (diceSets[i].dice[j].id === diceID) {
                     return diceSets[i];
                 }
         } 
@@ -641,29 +693,3 @@ document.addEventListener('DOMContentLoaded', function() {
     return check;
   };
 
-var onlongtouch; 
-var timer, lockTimer;
-var touchduration = 800; //length of time we want the user to touch before we do something
-
-function touchstart(e, numSides, diceSetID) {
-    console.log("'touch start")
-	e.preventDefault();
-	if(lockTimer){
-		return;
-	}
-    timer = setTimeout(function() {
-        board.findDiceSetbyID(diceSetID).addDice(numSides,1)
-        lockTimer = false;
-    }, touchduration); 
-	lockTimer = true;
-}
-
-function touchend(numSides, diceSetID) {
-    console.log("touch end")
-    //stops short touches from firing the event
-    if (lockTimer){
-        clearTimeout(timer); // clearTimeout, not cleartimeout..
-        lockTimer = false;
-        board.findDiceSetbyID(diceSetID).addDice(numSides,0), touchduration
-	}
-}

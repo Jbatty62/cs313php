@@ -210,9 +210,65 @@ height: 75px;
 
 #settings-toggle {
     background-color: yellow;
-    width: 50px;
-    height: 50px;
     position: absolute;
     top: 15px;
     left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    padding: 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#settings-toggle:hover {
+    transform: scale(1.1);
+}
+
+#settings-menu {
+    background-color: yellow;
+    position: absolute;
+    top: 15px;
+    left: 65px;
+    transition: 1s;
+}
+
+#settings-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+  }
+  
+  #settings-menu li  {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Change the link color on hover */
+  #settings-menu li:hover {
+    background-color: #555;
+    color: white;
+  }
+
+.hide {
+    display: none;
+}
+
+#tutorial {
+    height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 1s;
 }
