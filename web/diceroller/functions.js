@@ -279,7 +279,7 @@ function importDiceSet(url) {
             for (let i = 0; i < object.dice.length; i++) {
                 dice.push(new Dice(object.dice[i].numSides, object.dice[i].minimum))
             }
-            board.addDiceSet(new DiceSet(dice,data["title"],data["modifier"]));
+            board.addDiceSet(new DiceSet(dice,object["title"],object["modifier"]));
         }
     }
     ajax.send();
