@@ -12,6 +12,7 @@
         </style>
     </head>
     <body>
+        <canvas id="canvas"></canvas>
          <?php 
              //   include '/nav.php'
             ?>
@@ -20,10 +21,10 @@
             
                 
             </main>
-           <div id="settings-toggle" onclick="toggleSettings()">Menu</div>
+           <div id="settings-toggle" onclick="toggleSettings()"><img src="cog.svg" height="30px"></div>
            <div id="settings-menu" class="hide">
                <ul>
-                   <li onclick="importDiceSet('diceSet1.json')">Import Dice Set(Coming Soon)</li>
+                   <li onclick="importDiceSet('diceSet1.json')">Import Dice Set (AJAX)</li>
                    <li>Default Dice Minimum(Coming Soon)</li>
                    <li onclick="showTutorial()">Tutorial(Coming Soon)</li>
                </ul>
@@ -39,10 +40,15 @@
                 <source src="horse.mp3" type="audio/mpeg">
               Your browser does not support the audio element.
               </audio>
+              <span class="close"></span>
               
 
            </div>
             
         </div>
     </body>
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="canvas.js"></script>
+    </footer>
 </html>

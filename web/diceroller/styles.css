@@ -6,6 +6,26 @@
     --color-5:#ffffff;
 }
 
+@keyframes color-rotate {
+    0%   {background-color: var(--color-1);}
+    25%  {background-color: var(--color-3);}
+    50%  {background-color: var(--color-4);}
+    100% {background-color: var(--color-1);}
+  }
+
+body {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAI0lEQVQIW2NkwAT/GdHE/gP5jMiCYAGQIpggXAAmiCIAEgQAAE4FBbECyZcAAAAASUVORK5CYII=) var(--color-1);
+    animation-name: color-rotate;
+    animation-duration: 24s;
+    animation-iteration-count: infinite;
+  }
+
+  canvas {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      z-index: -1;
+  }
 #container {
     height: 100%;
     width: 100%;
@@ -20,7 +40,7 @@
     box-sizing: border-box;
     min-height: 100vh;
     width: 100%;
-    background-color: var(--color-1);
+    
 }
 
 .diceSet {
@@ -30,7 +50,6 @@
     padding: 25px;
     min-width: 300px;
     margin: 15px;
-   
    
 }
 
@@ -50,6 +69,12 @@
     box-sizing: border-box;
 }
 
+.dice:hover {
+    -webkit-transform : rotate(5deg) scale(1.1);
+    -ms-transform     : rotate(5deg) scale(1.1); 
+    transform         : rotate(5deg) scale(1.1); 
+}
+
 .close {
     position: absolute;
     right:8px;
@@ -67,7 +92,7 @@
     content: ' ';
     height: 33px;
     width: 2px;
-    background-color: #000;
+    background-color: #ffffff;
 }
 .close:before {
     transform: rotate(45deg);
@@ -150,7 +175,8 @@ padding: 3px;
 }
 .addDiceMenu{
     width: 100%;
-    min-height: 100%;
+    min-height: 0;
+    height: 0;
     position: absolute;
     background-color: rgba(62,62,62,0.6);
     top: 0;
@@ -160,6 +186,7 @@ padding: 3px;
     padding-top: 40px;
     box-sizing: border-box;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .helpText {
@@ -209,7 +236,6 @@ height: 75px;
 }
 
 #settings-toggle {
-    background-color: yellow;
     position: absolute;
     top: 15px;
     left: 15px;
@@ -232,6 +258,12 @@ height: 75px;
     top: 15px;
     left: 65px;
     transition: 1s;
+}
+
+#settings-toggle img {
+    fill: white;
+    stroke: white;
+    color: white;
 }
 
 #settings-menu ul {
@@ -271,4 +303,14 @@ height: 75px;
   background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 1s;
+}
+
+#tutorial-video {
+    display: block;
+    margin: 30vh auto;
+}
+
+#tutorial-audio {
+    display: block;
+    margin: auto;
 }

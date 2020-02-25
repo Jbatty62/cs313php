@@ -156,20 +156,46 @@ function addDice(diceSetID) {
 },false);
 
    menu.appendChild(d100);
-   menu.style.opacity = 0;
    
     
 
 
    document.addEventListener("mousedown", function() {
-        document.getElementsByClassName("addDiceMenu")[0].remove();
-   },{once:true});
-   document.getElementById(diceSetID).appendChild(menu);
 
-   for (opacity = 0; opacity < 1.1; opacity = opacity + 0.1) 
-   {           
-   setTimeout(function(){menu.style.opacity = opacity;},100);                      
-   } 
+    var height = 100;
+    var id = setInterval(function() {
+    menu.style.minHeight = 0;
+    if(height < 0) {
+        
+        clearInterval(id);
+        document.getElementsByClassName("addDiceMenu")[0].remove();
+    }
+    else {
+    menu.style.height = height + "%";
+    height -= 8;
+}
+
+}, 1000/60);
+        
+   },{once:true});
+
+
+   document.getElementById(diceSetID).appendChild(menu);
+   var height = 0;
+   var id = setInterval(function() {
+    
+    if(height > 100) {
+        
+        clearInterval(id);
+        menu.style.minHeight = "100%"
+        menu.style.height = "auto";
+    }
+    else {
+    menu.style.height = height + "%";
+    height += 5;
+}
+
+}, 1000/60);
 }
 /*
 if (menu.style.opacity == "1.2" ){
@@ -206,7 +232,27 @@ function rollAll(diceSetID) {
  * Remove a DiceSet from the board.
  *****************************************/
 function removeDiceSet(diceSetID) {
-    board.removeDiceSet(diceSetID);
+
+    let diceSet = document.getElementById(diceSetID);
+    
+    var opacity = 1;
+    diceSet.style.opacity = 1;
+
+    var id = setInterval(function() {
+    
+        if(opacity < 0) {
+            
+            clearInterval(id);
+            board.removeDiceSet(diceSetID);
+        }
+        else {
+        diceSet.style.opacity = opacity;
+        opacity -= 0.1;
+    }
+
+    }, 1000/30);
+
+    
 }
 
 /*****************************************
@@ -241,6 +287,7 @@ function loadBoard () {
     
         
         diceSets = []; //Array to store all DiceSets
+        board = new Board(diceSets);
         for (let i = 0; i< object.length; i++) {
             var dice = []; //Array to hold dice for one DiceSet
             for(let j = 0; j < object[i].dice.length; j++) {
@@ -249,10 +296,10 @@ function loadBoard () {
             }
             let title = decodeURIComponent(object[i].title)
             let modifier = object[i].modifier;
-            diceSets.push(new DiceSet(dice,title,modifier)); //Add array of dice to a new DiceSet and push to array of DiceSets
+            board.addDiceSet(new DiceSet(dice,title,modifier)); //Add array of dice to a new DiceSet and push to array of DiceSets
         }
         //Create new board and replace the old one
-        board = new Board(diceSets);
+        
     }
     
     board.display();
@@ -522,9 +569,6 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
         totalArea.appendChild(modMinus);
         totalArea.appendChild(modPlus);
         
-        
-
-        //totalArea.innerHTML +='';
 
      
        
@@ -538,7 +582,6 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
         dom.appendChild(totalArea);
         dom.appendChild(xButton);
 
-        
         this.dom = dom;
 
     };
@@ -594,6 +637,7 @@ function Board (diceSets) {
             }
             let button = document.createElement("button");
             button.setAttribute("onclick", "addDiceSet()");
+            button.setAttribute("id", "addDiceSet")
             button.innerHTML = "Add Dice Set"
 
             document.getElementById("main").appendChild(button);
@@ -663,8 +707,26 @@ function Board (diceSets) {
 
     this.addDiceSet = function (diceSet) {
         
+        diceSet.createDOM();
+        diceSet.dom.style.opacity = 0;
+        document.getElementById("main").insertBefore(diceSet.dom,document.getElementById("addDiceSet"));
         this.diceSets.push(diceSet);
-        this.display();
+
+        var opacity = 0;
+        var id = setInterval(function() {
+            
+            if(opacity > 1) {
+                
+                clearInterval(id);
+                
+            }
+            else {
+                diceSet.dom.style.opacity = opacity;
+                opacity += .1;
+        }
+
+}, 1000/30);
+        //this.display();
     };
     this.toJSON = function () {
         let json = '[';
