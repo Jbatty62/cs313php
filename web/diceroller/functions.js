@@ -38,10 +38,10 @@ function addDice(diceSetID) {
     helpText.setAttribute("class","helpText");
 
     if(isMobile){
-        helpText.innerHTML = "Tap for 0 based dice. Tap and Hold for 1 based dice";
+        helpText.innerHTML = "Tap for 1 based dice. Tap and Hold for 0 based dice";
     }
     else {
-        helpText.innerHTML = "Click for 0 based dice. Shift click for 1 based dice.";
+        helpText.innerHTML = "Click for 1 based dice. Shift click for 0 based dice.";
     }
 
 
@@ -51,7 +51,7 @@ function addDice(diceSetID) {
     menu.appendChild(helpText);
 
 
-   let min = 0;
+   let min = 1;
    let d3 = document.createElement("div");
    d3.setAttribute("class","d3");
    d3.classList.add("dice");
@@ -60,12 +60,12 @@ function addDice(diceSetID) {
        
         d3.addEventListener("long-press", function(e) {
             
-            board.findDiceSetbyID(diceSetID).addDice(3,1);
+            board.findDiceSetbyID(diceSetID).addDice(3,0);
             document.getElementsByClassName("addDiceMenu")[0].remove();
 
     },false);
         d3.addEventListener("touchend", function(e){
-            board.findDiceSetbyID(diceSetID).addDice(3,0)
+            board.findDiceSetbyID(diceSetID).addDice(3,1)
         }, false)
         
        
@@ -73,7 +73,7 @@ function addDice(diceSetID) {
     else {
        
         d3.addEventListener("mousedown", function(e) {
-            (e.shiftKey) ? min = 1 : min = 0;
+            (e.shiftKey) ? min = 0 : min = 1;
             board.findDiceSetbyID(diceSetID).addDice(3,min);
     },false);
     }
@@ -85,7 +85,7 @@ function addDice(diceSetID) {
     d4.classList.add("dice");
     d4.innerHTML = "d4";
     d4.addEventListener("mousedown", function(e) {
-        (e.shiftKey) ? min = 1 : min = 0;
+        (e.shiftKey) ? min = 0 : min = 1;
         board.findDiceSetbyID(diceSetID).addDice(4,min)
 },false);
 
@@ -96,7 +96,7 @@ function addDice(diceSetID) {
    d6.classList.add("dice");
    d6.innerHTML = "d6";
    d6.addEventListener("mousedown", function(e) {
-    (e.shiftKey) ? min = 1 : min = 0;
+    (e.shiftKey) ? min = 0 : min = 1;
     board.findDiceSetbyID(diceSetID).addDice(6,min)
 },false);
 
@@ -107,7 +107,7 @@ function addDice(diceSetID) {
    d8.classList.add("dice");
    d8.innerHTML = "d8";
    d8.addEventListener("mousedown", function(e) {
-    (e.shiftKey) ? min = 1 : min = 0;
+    (e.shiftKey) ? min = 0 : min = 1;
     board.findDiceSetbyID(diceSetID).addDice(8,min)
 },false);
 
@@ -118,7 +118,7 @@ function addDice(diceSetID) {
    d10.classList.add("dice");
    d10.innerHTML = "d10";
    d10.addEventListener("mousedown", function(e) {
-    (e.shiftKey) ? min = 1 : min = 0;
+    (e.shiftKey) ? min = 0 : min = 1;
     board.findDiceSetbyID(diceSetID).addDice(10,min)
 },false);
 
@@ -129,7 +129,7 @@ function addDice(diceSetID) {
    d12.classList.add("dice");
    d12.innerHTML = "d12";
    d12.addEventListener("mousedown", function(e) {
-    (e.shiftKey) ? min = 1 : min = 0;
+    (e.shiftKey) ? min = 0 : min = 1;
     board.findDiceSetbyID(diceSetID).addDice(12,min)
 },false);
 
@@ -140,7 +140,7 @@ function addDice(diceSetID) {
    d20.classList.add("dice");
    d20.innerHTML = "d20";
    d20.addEventListener("mousedown", function(e) {
-    (e.shiftKey) ? min = 1 : min = 0;
+    (e.shiftKey) ? min = 0 : min = 1;
     board.findDiceSetbyID(diceSetID).addDice(20,min)
 },false);
 
@@ -151,7 +151,7 @@ function addDice(diceSetID) {
    d100.classList.add("dice");
    d100.innerHTML = "d100";
    d100.addEventListener("mousedown", function(e) {
-    (e.shiftKey) ? min = 1 : min = 0;
+    (e.shiftKey) ? min = 0 : min = 1;
     board.findDiceSetbyID(diceSetID).addDice(100,min)
 },false);
 
@@ -197,19 +197,7 @@ function addDice(diceSetID) {
 
 }, 1000/60);
 }
-/*
-if (menu.style.opacity == "1.2" ){
-    for (opacity = 1.2; opacity > 0; opacity = opacity - 0.1) 
-    {           
-    console.log(opacity);
-    setTimeout(function(){document.getElementById('settings-menu').style.opacity = opacity;},100);                      
-    }  
-    console.log(menu.style.opacity);
-    
-}
-else {
 
-*/
 
 function showTutorial(){
     document.getElementById("tutorial").style.width = "100%";
@@ -368,7 +356,7 @@ function Dice(numSides, minimum) {
              return '<img src="' + imageName + '.jpg" width=90% height=90%> <h2>';
             }
             else {
-               return this.value;
+               return '<span>' + this.value + '</span>';
             }
     };
     this.setValue = function (value) {
@@ -385,6 +373,9 @@ function Dice(numSides, minimum) {
             roll += minimum;
         
         this.setValue(roll);
+        this.dom.classList.remove("run-animation");
+        void this.dom.offsetWidth;
+        this.dom.classList.add("run-animation");
         return roll;
     };
     
@@ -400,6 +391,7 @@ function Dice(numSides, minimum) {
             board.findDiceSetbyDiceID(self.id).updateTotal();
         }, false)
 
+        dom.classList.add("run-animation");
         this.dom = dom;
 
     }
@@ -443,7 +435,6 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
         document.getElementById(this.id).getElementsByClassName("total")[0].innerHTML = total;
     };
     this.updateTitle = function() {
-        console.log(this.id);
         this.title = encodeURIComponent(document.getElementById(this.id).getElementsByClassName("diceSetTitle")[0].innerHTML);
     };
     this.updateModifier = function(inputValue = 0) {
@@ -533,7 +524,7 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
         title.addEventListener("blur", function() {
             self.updateTitle();
         },false);
-        title.innerHTML = this.title;
+        title.innerHTML = decodeURIComponent(this.title);
 
         let totalArea = document.createElement("div");
         totalArea.classList.add("totalArea")
@@ -553,7 +544,6 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
         modPlus.setAttribute("class","adjusts");
         modPlus.innerHTML = "+";
         modPlus.addEventListener("click", function() {
-            console.log("Message");
             self.updateModifier(1);
         },false);
 
@@ -561,7 +551,6 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
         modMinus.setAttribute("class","adjusts");
         modMinus.innerHTML = "-";
         modMinus.addEventListener("click", function() {
-            console.log("Message");
             self.updateModifier(-1);
         },false);
 
@@ -635,22 +624,32 @@ function Board (diceSets) {
                 
 
             }
+
+            buttonWrapper = document.createElement("div");
+            buttonWrapper.classList.add("buttonWrapper");
+            buttonWrapper.setAttribute("id","buttonWrapper");
+
             let button = document.createElement("button");
             button.setAttribute("onclick", "addDiceSet()");
             button.setAttribute("id", "addDiceSet")
             button.innerHTML = "Add Dice Set"
 
-            document.getElementById("main").appendChild(button);
+            buttonWrapper.appendChild(button);
 
             button = document.createElement("button");
             button.setAttribute("onclick", "saveBoard()");
             button.innerHTML = "Save Dice Sets";
-            document.getElementById("main").appendChild(button);
+            buttonWrapper.appendChild(button);
 
             button = document.createElement("button");
             button.setAttribute("onclick", "loadBoard()");
             button.innerHTML = "Load Dice Sets";
-            document.getElementById("main").appendChild(button);
+            buttonWrapper.appendChild(button);
+
+            document.getElementById("main").appendChild(buttonWrapper);
+
+           
+
 
 
     };
@@ -709,7 +708,7 @@ function Board (diceSets) {
         
         diceSet.createDOM();
         diceSet.dom.style.opacity = 0;
-        document.getElementById("main").insertBefore(diceSet.dom,document.getElementById("addDiceSet"));
+        document.getElementById("main").insertBefore(diceSet.dom,document.getElementById("buttonWrapper"));
         this.diceSets.push(diceSet);
 
         var opacity = 0;

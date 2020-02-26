@@ -1,17 +1,11 @@
 {
 	"title": "Imported Dice Set",
-	"modifier": "5",
+	"modifier": 15,
 	"dice": [{
-		"numSides": "3",
-		"minimum": "0"
+		"numSides": 20,
+		"minimum": 1
 	}, {
-		"numSides": "6",
-		"minimum": "1"
-	}, {
-		"numSides": "6",
-		"minimum": "1"
-	}, {
-		"numSides": "6",
-		"minimum": "1"
+		"numSides": 4,
+		"minimum": 1
 	}]
 }
