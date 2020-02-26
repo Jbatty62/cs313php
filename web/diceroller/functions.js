@@ -397,7 +397,7 @@ function Dice(numSides, minimum) {
     }
     this.dom = null;    
     this.toJSON = function () {
-        return '{"numSides": "' + this.numSides + '", "minimum": "' + this.minimum + '"}';
+        return '{"numSides": ' + this.numSides + ', "minimum": ' + this.minimum + '}';
     }
 } 
 
@@ -577,7 +577,7 @@ function DiceSet(dice = [], title = "Title", modifier = 0) {
     this.dom = null;
     this.toJSON = function() {
         var json = '{';
-        json += '"title": "' + this.title + '","modifier": "'+ this.modifier + '","dice": [';
+        json += '"title": "' + this.title + '","modifier": '+ this.modifier + ',"dice": [';
         for (let i = 0; i < dice.length; i++) {
             json += dice[i].toJSON();
             if (i != dice.length - 1) {
