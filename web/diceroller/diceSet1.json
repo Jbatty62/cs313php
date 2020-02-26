@@ -1,11 +1,26 @@
-{
-	"title": "Imported Dice Set",
-	"modifier": 15,
+[{
+	"title": "Imported%20Dice%20Set%20-%20Full%20Set",
+	"modifier": "0",
 	"dice": [{
-		"numSides": 20,
-		"minimum": 1
+		"numSides": "4",
+		"minimum": "1"
 	}, {
-		"numSides": 4,
-		"minimum": 1
+		"numSides": "6",
+		"minimum": "1"
+	}, {
+		"numSides": "8",
+		"minimum": "1"
+	}, {
+		"numSides": "10",
+		"minimum": "1"
+	}, {
+		"numSides": "100",
+		"minimum": "1"
+	}, {
+		"numSides": "12",
+		"minimum": "1"
+	}, {
+		"numSides": "20",
+		"minimum": "1"
 	}]
-}
+}]
